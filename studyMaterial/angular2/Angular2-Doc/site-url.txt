@@ -1,0 +1,146 @@
+ Editor
+ visual stduo code
+
+code differ
+https://www.diffchecker.com/
+
+1:Pagination LInk
+https://codepen.io/cornflourblue/pen/KVeaQL
+
+2: rang
+https://stackoverflow.com/questions/3895478/does-javascript-have-a-method-like-range-to-generate-an-array-based-on-suppl
+
+3: Slim scroll-CSS
+https://codepen.io/GhostRider/pen/GHaFw
+
+4: add Hours:miunte:second from movement.js
+https://stackoverflow.com/questions/17333425/add-a-duration-to-a-moment-moment-js
+https://stackoverflow.com/questions/43474986/how-to-add-minutes-in-moment-js-with-a-hhmm-format
+
+5: Custom toaster
+ https://github.com/jirikavi/AngularJS-Toaster
+ 
+6: Movement.js
+ http://momentjs.com/docs/#/durations/hours/
+ 
+7: Text editor
+ http://wysibb.com/demo/
+ 
+8: TintMCE
+ http://plnkr.co/edit/04AFkp?p=preview
+ 
+9: International Telephone
+ Angular :  https://github.com/hodgepodgers/ng-intl-tel-input
+ Jquery : https://github.com/jackocnr/intl-tel-input
+ 
+10: SElct All Check Box
+ https://jsfiddle.net/0vb4gapj/1/
+ 
+11: email Validation
+ https://www.formget.com/regular-expression-for-email/
+ http://www.aorank.com/tutorial/validate-email-id-by-regex/index.php
+ 
+ exa: Runninggggggg 
+ 
+ /********* Slider *************/
+ https://www.npmjs.com/package/angular-ui-carousel
+ note: dynamic add item
+ https://mihnsen.github.io/ui-carousel/
+ https://github.com/mihnsen/ui-carousel
+ 
+12: move forwod directory
+ http://jsfiddle.net/z02L5gbx/
+ 
+13: Image Cropped using [ngFileUpload]
+ http://jsfiddle.net/danialfarid/xxo3sk41/590/
+ 
+ /* Service use as global objec*/*/
+14: http://jsfiddle.net/pkozlowski_opensource/BRWPM/2/
+ 
+ /* Add More */
+ https://embed.plnkr.co/plunk/7nSdmC
+ http://www.shanidkv.com/blog/angularjs-adding-form-fields-dynamically
+ 
+ /* Recieve Real Time Notification */
+ http://jmesnil.net/stomp-websocket/doc/
+ 
+ /*Get mime type of file*/
+ https://npm.runkit.com/mime-types
+ 
+ https://github.com/broofa/node-mime/blob/master/README.md
+ 
+ 
+ 
+ 	$(document).on('click', '.intl-tel-input .country', function() {
+        $timeout(function(){
+            $scope.moredetails.mobno = '';
+        },200);  
+    });
+	
+	
+	/*  	$scope.$on('$viewContentLoaded', function(event) {
+		$timeout(function(){
+			console.log("idsssssssssss", $("#registrationMobile"), $scope.loginDetail);
+			$("#registrationMobile").intlTelInput({
+	    		'separateDialCode':true, 
+			});
+		},5000);                 
+    });*/
+
+/*	$scope.$watch('loginDetail', function() {  
+	console.log("");    
+      if($scope.loginDetail == true){
+			console.log("idsssssssssss", $("#registrationMobile"), $scope.loginDetail);
+			$("#registrationMobile").intlTelInput({
+	    		'separateDialCode':true,
+	    		'initialCountry': "us",
+			});
+
+      }                          
+    }, true);*/
+	
+	
+	ngIntlTelInput.set({separateDialCode: true});
+	ngIntlTelInput.set({initialCountry: attr.initialCountry});
+	
+	
+****  Upload Image **** 
+https://github.com/danialfarid/ng-file-upload
+
+	https://jsfiddle.net/alexk111/rw6q9/
+	https://www.npmjs.com/package/angular-img-cropper
+	
+	Runninggggggg
+	https://stackoverflow.com/questions/37817763/how-do-you-use-ng-file-upload-and-ngimgcrop
+	http://jsfiddle.net/danialfarid/xxo3sk41/590/
+	http://jsfiddle.net/xxo3sk41/1825/
+	
+	Running Demo ngImgCrop
+	http://jsfiddle.net/melnikovkolya/a2ew3yhf/2/
+	https://www.npmjs.com/package/ng-img-crop-dynamic
+	
+**** Select Trgger  *******
+https://stackoverflow.com/questions/13234971/simulate-click-on-select-element-with-jquery
+http://jsfiddle.net/vWx2H/456/	
+
+********** $filter(filter) ***********
+http://jsfiddle.net/jwcarroll/VfEcp/
+
+**** Infinite Scroll  ******
+https://codepen.io/akagr/pen/Koagx
+http://jsfiddle.net/vojtajina/U7Bz9/
+
+*** Table Sorting *****
+https://plnkr.co/edit/?p=preview
+
+/********** Angular2
+http://www.angulartypescript.com/angular-2-router-example/
+https://developer.telerik.com/featured/super-fast-setup-angular-2-components-component-router/
+/** Component Intrection ***/
+http://www.codershood.info/2016/10/09/passing-data-angular-2-components/
+https://www.infragistics.com/community/blogs/dhananjay_kumar/archive/2016/12/13/communication-between-components-using-input-in-angular-2.aspx
+
+************ Redux ****/
+https://julienrenaux.fr/2016/08/03/introduction-to-redux-and-angular2/
+https://www.npmjs.com/package/ng2-redux#installation
+	

@@ -1,0 +1,183 @@
+AngularJS directives extend the HTML elements with new behaviors. AngularJS directive help you to manipulate HTML elements, handle event, perform data binding, associate controllers/scope with a view and many more things. AngularJS provide you some built-in directives like as ng-app, ng-controller, ng-repeat, ng-model etc. to make it easy.
+
+Basically, AngularJS directives are its core functions that get run when the DOM is compiled by the compiler. These are start with the ng- prefix attributes.
+
+AngularJS : A simple directive example
+<div ng-app="app">
+ <input type="text" ng-model="name">
+ <div></div>
+</div>
+Invoking directive
+AngularJS provides you four ways to invoke a directive from HTML. These are all equivalent in AngularJS.
+
+Directive as an attribute
+<div ng-directive></div>
+Directive as a CSS class
+<div class="ng-directive: expression;"></div>
+Directive as an element
+<ng-directive></ng-directive>
+Directive as a comment
+<!-- directive: ng-directive expression -->
+Invoking directive with name prefixes
+You can also invoke a directive with name prefix like ng-,ng:,ng_,x-ng-,data-ng-. These are all equivalent in AngularJS.
+
+<input type="text" ng-model="directivename"/>
+<div ng-bind="directivename"></div>
+<div ng:bind="directivename"></div>
+<div ng_bind="directivename"></div>
+<div x-ng-bind="directivename"></div>
+<div data-ng-bind="directivename"></div>
+Note
+Use the data-prefixed version (e.g. data-ng-bind for ngBind) of directive, if you want to validate your HTML controls value.
+
+Creating a custom directive
+AngularJS also allow you to create your own directives based on your requirements. There is no built-in directive for comparing password in angular. So you can create your own custom directive for comparing password.
+
+Creating Custom Directive Syntax
+<script>
+//creating custom directive syntax
+myApp.directive("myDir", function () {
+ return {
+ restrict: "E", //define directive type like E = element, A = attribute, C = class, M = comment
+ scope: { //create a new child scope or an isolate scope
+ 
+ //@ reads the attribute value,
+ //= provides two-way binding,
+ //& works with functions
+ 
+ title: '@'
+ },
+ template: "<div></div>",// define HTML markup
+ templateUrl: 'mytemplate.html', //path to the template, used by the directive
+ replace: true | false, // replace original markup with template yes/no
+ transclude: true | false, // copy original HTML content yes/no
+ controller: function (scope) { //define controller, associated with the directive template
+ //TODO:
+ },
+ link: function (scope, element, attrs, controller) {//define function, used for DOM manipulation
+ //TODO:
+ }
+ }
+ });
+</script> 
+Creating custom directive for comparing textbox values
+<script>
+ //defining module
+ var myapp = angular.module('myApp', []);
+ 
+ //creating custom directive
+ myapp.directive('ngCompare', [function () {
+ return {
+ require: 'ngModel',
+ link: function (scope, elem, attrs, ctrl) {
+ var firstfield = "#" + attrs.ngCompare;
+ 
+ //second field key up
+ elem.on('keyup', function () {
+ scope.$apply(function () {
+ var isMatch = elem.val() === $(firstfield).val();
+ ctrl.$setValidity('valueMatch', isMatch);
+ });
+ });
+ 
+ //first field key up
+ $(firstfield).on('keyup', function () {
+ scope.$apply(function () {
+ var isMatch = elem.val() === $(firstfield).val();
+ ctrl.$setValidity('valueMatch', isMatch);
+ });
+ });
+ }
+ }
+ }]);
+</script>
+AngularJS : Creating custom directive with example
+<!DOCTYPE html>
+<html>
+<head>
+ <title>AngularJS Custom Directive</title>
+ <link href="css/bootstrap.css" rel="stylesheet" />
+ <link href="css/bootstrap-theme.css" rel="stylesheet" />
+ <script src="lib/jquery-1.11.1.js"></script>
+ <script src="lib/angular.js"></script>
+</head>
+<body>
+ <div ng-app="myApp" ng-controller="mainController">
+ <br />
+ <div class="container">
+ <form name="userForm" ng-submit="submitForm()" novalidate>
+ <h2>AngularJS Custom Directive (comparing input values)</h2>
+ 
+ <!-- EMAIL -->
+ <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid}">
+ <label>Email</label>
+ <input type="email" name="email" class="form-control" ng-model="user.email" placeholder="Your Email Address" ng-required="true">
+ <p ng-show="userForm.email.$error.required" class="help-block">Email is required.</p>
+ <p ng-show="userForm.email.$error.email" class="help-block">Enter a valid email.</p>
+ </div>
+ 
+ <!-- Password -->
+ <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid}">
+ <label>Password</label>
+ <input type="Password" name="password" id="password" class="form-control" ng-model="user.password" placeholder="Your Password" ng-required="true">
+ <p ng-show="userForm.password.$invalid" class="help-block">Your password is required.</p>
+ </div>
+ 
+ <!-- Confirm Password -->
+ <div class="form-group" ng-class="{ 'has-error' : userForm.confirmPassword.$invalid}">
+ <label>Confirm Password</label>
+ <input type="Password" name="confirmPassword" class="form-control" ng-model="user.confirmPassword" placeholder="Confirm Your Password" ng-compare="password" ng-required="true">
+ <p ng-show="userForm.confirmPassword.$error.required" class="help-block">Your confirm password is required.</p>
+ <p ng-show="userForm.confirmPassword.$error.valueMatch && !userForm.confirmPassword.$error.required" class="help-block">Confirm password doesnot match.</p>
+ </div>
+ 
+ <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Register</button>
+ </form>
+ </div>
+ </div>
+ 
+ <script>
+ //defining module
+ var myapp = angular.module('myApp', []);
+ 
+ //creating custom directive
+ myapp.directive('ngCompare', [function () {
+ return {
+ require: 'ngModel',
+ link: function (scope, elem, attrs, ctrl) {
+ var firstfield = "#" + attrs.ngCompare;
+ 
+ //second field key up
+ elem.on('keyup', function () {
+ scope.$apply(function () {
+ var isMatch = elem.val() === $(firstfield).val();
+ ctrl.$setValidity('valueMatch', isMatch);
+ });
+ });
+ 
+ //first field key up
+ $(firstfield).on('keyup', function () {
+ scope.$apply(function () {
+ var isMatch = elem.val() === $(firstfield).val();
+ ctrl.$setValidity('valueMatch', isMatch);
+ });
+ });
+ }
+ }
+ }]);
+ 
+ // create angular controller
+ myapp.controller('mainController', function ($scope) {
+ 
+ // function to submit the form
+ $scope.submitForm = function () {
+ 
+ // check to make sure the form is completely valid
+ if ($scope.userForm.$valid) {
+ alert('form is submitted');
+ }
+ };
+ });
+ </script>
+</body>
+</html>

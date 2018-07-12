@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.siblings * { 
+    display: block;
+    border: 2px solid lightgrey;
+    color: lightgrey;
+    padding: 5px;
+    margin: 15px;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("li.start").next().css({"color": "red", "border": "2px solid red"});
+    $( "button[disabled]" ).next().text( "this button is disabled" );
+    $( "p").next( ".selected" ).css( "background", "yellow" );
+});
+</script>
+</head>
+<body>
+
+  <h4>The next() method returns the next sibling element of the selected element.
+
+Sibling elements are elements that share the same parent.
+
+The DOM tree: This method traverse forward along the next sibling of DOM elements..</h4><br>
+  
+<div style="width:500px;" class="siblings">
+  <ul>ul (parent)  
+    <li>li (sibling)</li>
+    <li>li (sibling)</li>
+    <li class="start">li (sibling with class name "start")</li>
+    <li>li (the next sibling of li with class name "start")</li>
+    <li>li (sibling)</li>
+  </ul>   
+</div>
+<br><br>
+<div><button disabled="disabled">First</button> - <span></span></div>
+<div><button>Second</button> - <span></span></div>
+<div><button disabled="disabled">Third</button> - <span></span></div>
+
+<br><br>
+<p>Hello</p>
+<p class="selected">Hello Again</p>
+<div><span>And Again</span></div>
+
+</body>
+</html>

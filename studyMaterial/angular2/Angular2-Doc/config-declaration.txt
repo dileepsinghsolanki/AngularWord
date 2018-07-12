@@ -1,0 +1,16 @@
+BrowserModule:
+ includes built-in directives like NgIf and NgFor. This means we can use these built-in directives in any of this module's component templates.
+ We imported BrowserModule, which itself imports the CommonModule which contains the common built-in directives such as NgIf and NgFor. By importing BrowserModule, we in turn get what CommonModule has to offer too.
+ 
+ NgModules: We use an Angular Module as the starting point for our applications. When we decorate a class with @NgModule we are telling Angular important information about this Angular Module's role.
+ we have turned the class AppModule into an Angular module just by using the NgModule decorator. The NgModule decorator requires at least three properties: imports, declarations and bootstrap.
+ 
+ Bootstrap: The bootstrap property is where we define the root component of our module. Even though this property is also an array, 99% of the time we are going to define only one component.
+
+ NOTE: 
+  There are two types of modules, root modules and feature modules.
+   If the module is importing the BrowserModule then it's a root module, if instead is importing the CommonModule then it is a feature module
+
+   
+   
+ 

@@ -1,0 +1,9 @@
+********** Lazy loading
+Lazy loading is a technique in Angular that allows you to load JavaScript components asynchronously when a specific route is activated. This can add some initial performance during the initial load, especially if you have many components with complex routing.
+
+*************** Why need lazy loading?
+Normally, Angular will load all the components when starting up the application, as you can see in the app.module.ts all components are imported and put them all in the declarations array, this is will tell Angular that ‘Please load all of this components in the declarations array when starting up the application’.
+This is will make our application slow when user first visit our site, because we need to download all components at first time but what user can see is only home page (home component). This is why we need lazy loading to improve the performance of loading time of the application.
+
+************** How Lazy Loading work?
+Lazy Loading is load only what we need to use when first starting up the application. If user navigate to a new page, then the component for that page will load immediately. However, this not mean that it load the component all the time we change page. In fact, it load only for the first visit page, it will not load when we revisit that page again.

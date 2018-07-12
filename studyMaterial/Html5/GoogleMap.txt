@@ -1,0 +1,108 @@
+Google Maps - Basic Map Types
+
+Alli Events
+https://www.w3schools.com/graphics/google_maps_reference.asp
+
+The following map types are supported in Google Maps API:
+
+ROADMAP (normal, default 2D map)
+SATELLITE (photographic map)
+HYBRID (photographic map + roads and city names)
+TERRAIN (map with mountains, rivers, etc.)
+
+******** Goole amp
+Create a Function to Set The Map Properties
+function myMap() {
+var mapProp= {
+    center:new google.maps.LatLng(51.508742,-0.120850),
+    zoom:5,
+};
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+
+The mapProp variable defines the properties for the map.
+
+The center property specifies where to center the map (using latitude and longitude coordinates).
+
+The zoom property specifies the zoom level for the map (try to experiment with the zoom level).
+
+The line: var map=new google.maps.Map(document.getElementById("googleMap"), mapProp); creates a new map inside the <div> element with id="googleMap", using the parameters that are passed (mapProp).
+
+*************** Free Google API Key
+Google allows a website to call any Google API for free, thousands of times a day.
+Go to https://console.developers.google.com to get a free API key.
+Google Maps expects to find the API key in the key parameter when loading an API:
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+
+************* Google Maps - Overlays
+Overlays are objects on the map that are bound to latitude/longitude coordinates.
+Google Maps has several types of overlays:
+
+Marker - Single locations on a map. Markers can also display custom icon images
+Polyline - Series of straight lines on a map
+Polygon - Series of straight lines on a map, and the shape is "closed"
+Circle and Rectangle
+Info Windows - Displays content within a popup balloon on top of a map
+Custom overlays
+
+************* Google Maps - Add a Marker
+The Marker constructor creates a marker. (Note that the position property must be set for the marker to display).
+Add the marker to the map by using the setMap() method:
+Example
+var marker = new google.maps.Marker({position: myCenter});
+marker.setMap(map);
+
+********* Google Maps - Animate the Marker
+The example below shows how to animate the marker with the animation property:
+Example
+var marker = new google.maps.Marker({
+  position:myCenter,
+  animation:google.maps.Animation.BOUNCE
+  });
+marker.setMap(map);
+
+***************** Google Maps - Icon Instead of Marker
+The example below specifies an image (icon) to use instead of the default marker:
+
+Example
+var marker=new google.maps.Marker({
+  position:myCenter,
+  icon:'pinkball.png'
+  });
+
+marker.setMap(map);
+
+************ Click The Marker to Zoom
+We still use the map from the previous page: a map centered on London, England.
+Now we want to zoom when a user is clicking on the marker (We attach an event handler to a marker that zooms the map when clicked).
+Here is the added code:
+Example
+// Zoom to 9 when clicking on marker
+google.maps.event.addListener(marker,'click',function() {
+  map.setZoom(9);
+  map.setCenter(marker.getPosition());
+  });
+  
+ 
+ ************* The Map() Constructor
+ The Map() constructor creates a new map inside a specified HTML element (typically a <div> element).
+ 
+ <div id="map" style="width:100%;height:500px"></div>
+
+<script>
+function myMap() {
+  var mapCanvas = document.getElementById("map");
+  var mapOptions = {
+    center: new google.maps.LatLng(51.508742, -0.120850),
+    zoom: 5
+  };
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+}
+</script>
+Syntax
+new google.maps.Map(HTMLElement,MapOptions)
+
+\Parameter Values
+Parameter	Description
+HTMLElement	Specifies in what HTML element to put the map
+MapOptions	A MapOptions object that holds the map initialization variables/options

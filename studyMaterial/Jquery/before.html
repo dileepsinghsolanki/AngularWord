@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>before demo</title>
+<style>
+p {
+background: yellow;
+}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<p> is what I said...</p>
+<script>
+$( "p" ).before( "<b>Hello</b>" ); // Inserts some HTML before all paragraphs.
+// $( "p" ).before( document.createTextNode( "Hello" ) ); //Inserts a DOM element before all paragraphs.
+// $( "p" ).before( $( "b" ) ); //Inserts a jQuery object
+</script>
+</body>
+</html>

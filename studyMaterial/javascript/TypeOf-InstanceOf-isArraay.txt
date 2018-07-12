@@ -1,0 +1,28 @@
+*** typeof *****
+The typeof operator is used to get the data type of its operand.
+
+function reflect(value) {
+ return value;
+}
+console.log(typeof reflect); //O/P "function"
+
+typeof returns "object". That’s not very helpful
+when you’re dealing with a lot of different types. To identify reference
+types more easily, you can use JavaScript’s instanceof operator. 
+
+*** instanceof operator ****
+The instanceof operator takes an object and a constructor as parameters.
+When the value is an instance of the type that the constructor specifies,
+instanceof returns true; otherwise, it returns false
+
+var items = [];
+console.log(items instanceof Array); // O/P  true
+
+ JavaScript values can be passed back and forth between
+frames in the same web page.
+when you pass an array from one frame to another,
+instanceof doesn’t work because the array is actually an instance of Array
+from a different frame.
+
+var items = [];
+console.log(Array.isArray(items)); // true

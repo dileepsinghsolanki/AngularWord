@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>insertBefore demo</title>
+  <style>
+  #foo {
+    background: yellow;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+  <h4>Description: Insert every element in the set of matched elements before the target.. <br> Insert all paragraphs before an element with id of "foo". Same as $( "#foo" ).before( "p" ). </h4>
+ 
+<div id="foo">FOO!</div>
+<p>I would like to say: </p>
+ 
+<script>
+$( "p" ).insertBefore( "#foo" );
+</script>
+ 
+</body>
+</html>

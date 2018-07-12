@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("p").text("Hello world!");
+var dd = $("span").text();
+alert(dd);
+    });
+});
+</script>
+</head>
+<body>
+
+<h4> Description: The text() method sets or returns the text content of the selected elements.
+
+When this method is used to return content, it returns the text content of all matched elements (HTML markup will be removed).
+
+When this method is used to set content, it overwrites the content of ALL matched elements. <br> Get the combined text contents of each element in the set of matched elements, including their descendants.. </h4>
+
+<button>Set text content for all p elements</button>
+<span>Dileep Singh</span>
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+
+</body>
+</html>

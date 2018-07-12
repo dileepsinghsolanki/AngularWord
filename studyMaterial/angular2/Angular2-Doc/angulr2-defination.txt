@@ -1,0 +1,107 @@
+Site Url : https://ponyfoo.com/articles/setting-up-angular-2-development-environment#set-up-your-base-project
+
+Angular 2 is the rave( अत्यधिक प्रशंसा करना ) of the moment. It is a modern JavaScript framework that is supercharged with awesome features. In fact, Angular 2 is now more than a framework, it is a platform for developing web, mobile and desktop applications. It is a complete re-write of Angular 1 that takes advantage of the new ES6 features, TypeScript, server-side rendering, RxJS and the goodies that modern JavaScript has to offer.
+
+Angular 2 requires a bit of setup to get started.
+Angular 2 requires a bit of setup to get started. To avoid the headaches associated with setup, the Angular team came up with the Angular CLI ( https://cli.angular.io/ ). The Angular 2 CLI makes it easy to create an application that just works out of the box.
+
+Install the Angular 2 CLI globally:	
+npm install -g angular-cli
+
+Note: The Angular team has decided to drop the 2 from the name. So, it is now called Angular instead of Angular 2. For the sake( लिहाज, खातिर, कारण) of this tutorial, I’ll use Angular 2 to prevent confusion from developers just trying out the framework for the first time.
+
+Use these commands to simply create your app and run it:
+ng new myapp // creates a new app
+ng generate // generates components, routes, services and pipes
+ng serve // serves your application in the browser
+
+Set up Your Base Project
+Quickly go ahead and create a new directory, newapp. Move into the directory and create an index.html.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular 2 app</title>
+</head>
+<body>
+  <h2>Setting up my development environment</h2>
+</body>
+</html>
+
+Create another file, package.json by running the npm init command from the terminal. You can simply just type enter several times throughout all the questions been asked to speedily create the file.
+
+Let’s install a package, lite-server, that will allow us to serve our application like so:
+npm install --save-dev lite-server
+
+Note: lite-server comes bundled with browser-sync which automatically reloads the browser when our files change.
+Open up package.json to configure lite-server like so:
+
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "lite": "lite-server"
+}
+
+Now run npm run lite from your terminal, your browser should open up displaying your application and in your terminal, you should see something like this:
+**** 
+Change something within your index.html file and you’ll discover ( खोजना, मालूम करना,  ) that your browser refreshes automatically and reflects that change!
+
+Configuring the TypeScript Language:
+You can decide to use TypeScript or use vanilla JavaScript. Personally, I prefer TypeScript because it is JavaScript with some sugar added to it like type checking. So let’s go ahead and install TypeScript like so:
+npm install --save-dev typescript
+
+Create a file, tsconfig.json in your directory. All our TypeScript configuration live( सीधा, ) here.
+Open up your tsconfig.json and add the following:
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "noImplicitAny": false
+  }
+}
+
+Thanks to the "target": "es5" option, TypeScript will transpile our ES6 code to ES5 so that all browsers can understand the JavaScript code we write. Then we also want sourcemaps and decorators. In Angular 2, lots of decorators are used.
+
+npm install @types/node @types/core-js @types/jasmine --save-dev
+
+The reason for installing these packages is to add type definitions to our project. It will make our editor support type-hinting, language highlighting for TypeScript, JavaScript and the modules from node we use in our code.
+
+Open up your package.json file again, let’s add new commands in the scripts section like so:
+Go ahead and install these scoped npm packages like so:
+
+"scripts": {
+  "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\"",
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "lite": "lite-server",
+  "tsc": "tsc",
+  "tsc:w": "tsc -w"
+},
+
+So, tsc is to start up TypeScript compiler & tsc:w is to watch for file changes. We also added the start command which will run three commands together concurrently. However, you can take advantage of Angular’s AOT ( https://angular.io/guide/aot-compiler ) compiler. It replaces the usage of tsc with ngc which is Angular template compiler (a drop-in replacement for tsc).
+
+Wait a minute! How do we run three commands concurrently? Aha! Concurrently package to the rescue.
+
+Setting up Concurrently
+Concurrently is a nodejs package that allows us to run multiple commands concurrently ( https://www.npmjs.com/package/concurrently ). Let’s pull in the package.
+
+npm install concurrently --save-dev
+Now, run npm start from the terminal to start your application with lite-server and typescript working concurrently like so:
+
+Your App is now being served locally.
+
+BrowserModule:
+ includes built-in directives like NgIf and NgFor. This means we can use these built-in directives in any of this module's component templates.
+ We imported BrowserModule, which itself imports the CommonModule which contains the common built-in directives such as NgIf and NgFor. By importing BrowserModule, we in turn get what CommonModule has to offer too.
+ 
+ NgModules: We use an Angular Module as the starting point for our applications. When we decorate a class with @NgModule we are telling Angular important information about this Angular Module's role.
+ we have turned the class AppModule into an Angular module just by using the NgModule decorator. The NgModule decorator requires at least three properties: imports, declarations and bootstrap.
+ 
+ Bootstrap: The bootstrap property is where we define the root component of our module. Even though this property is also an array, 99% of the time we are going to define only one component.
+
+ NOTE: 
+  There are two types of modules, root modules and feature modules.
+   If the module is importing the BrowserModule then it's a root module, if instead is importing the CommonModule then it is a feature module

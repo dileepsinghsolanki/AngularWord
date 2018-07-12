@@ -1,0 +1,128 @@
+************** Multimedia
+Multimedia on the web is sound, music, videos, movies, and animations.
+What is Multimedia?
+Multimedia comes in many different formats. It can be almost anything you can hear or see.
+Examples: Images, music, sound, videos, records, films, animations, and more.
+Web pages often contain multimedia elements of different types and formats.
+In this chapter you will learn about the different multimedia formats.
+
+************* Multimedia Formats
+Video : Only MP4, WebM, and Ogg video are supported by the HTML5 standard.
+Audio: Only MP3, WAV, and Ogg audio are supported by the HTML5 standard.
+
+********* Playing Videos in HTML
+Before HTML5, a video could only be played in a browser with a plug-in (like flash).
+The HTML5 <video> element specifies a standard way to embed a video in a web page.
+<video width="320" height="240" controls>
+  <source src="movie.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+Your browser does not support the video tag.
+</video>
+************ How it Works
+The controls attribute adds video controls, like play, pause, and volume.
+It is a good idea to always include width and height attributes. If height and width are not set, the page might flicker while the video loads.
+The <source> element allows you to specify alternative video files which the browser may choose from. The browser will use the first recognized format.
+The text between the <video> and </video> tags will only be displayed in browsers that do not support the <video> element.
+
+************* HTML <video> Autoplay
+To start a video automatically use the autoplay attribute:
+<video width="320" height="240" autoplay>
+  <source src="movie.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+Your browser does not support the video tag.
+</video>
+Note: The autoplay attribute does not work in mobile devices like iPad and iPhone.
+
+************** HTML5 Video Tags
+Tag	Description
+<video>	Defines a video or movie
+<source>	Defines multiple media resources for media elements, such as <video> and <audio>
+<track>	Defines text tracks in media players
+
+************* Audio on the Web
+Before HTML5, audio files could only be played in a browser with a plug-in (like flash).
+The HTML5 <audio> element specifies a standard way to embed audio in a web page.
+<audio controls>
+  <source src="horse.ogg" type="audio/ogg">
+  <source src="horse.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+************* HTML Audio - How It Works
+The controls attribute adds audio controls, like play, pause, and volume.
+The <source> element allows you to specify alternative audio files which the browser may choose from. The browser will use the first recognized format.
+The text between the <audio> and </audio> tags will only be displayed in browsers that do not support the <audio> element.
+
+************ HTML Audio - Methods, Properties, and Events
+HTML5 defines DOM methods, properties, and events for the <audio> element
+
+This allows you to load, play, and pause audios, as well as set duration and volume.
+There are also DOM events that can notify you when an audio begins to play, is paused, etc.
+For a full DOM reference, go to our HTML5 Audio/Video DOM Reference.
+
+*********** Plugins
+The purpose of a plug-in is to extend the functionality of a web browser.
+
+HTML Helpers (Plug-ins)
+Helper applications (plug-ins) are computer programs that extend the standard functionality of a web browser.
+Examples of well-known plug-ins are Java applets.
+Plug-ins can be added to web pages with the <object> tag or the <embed> tag. 
+Plug-ins can be used for many purposes: display maps, scan for viruses, verify your bank id, etc.
+To display video and audio: Use the <video> and <audio> tags.
+
+The <object> element can also be used to include HTML in HTML:
+Example
+<object width="100%" height="500px" data="snippet.html"></object>
+
+The <embed> element can also be used to include HTML in HTML:
+Example
+<embed width="100%" height="500px" src="snippet.html">
+
+************** HTML YouTube Videos
+The easiest way to play videos in HTML, is to use YouTube.
+Struggling with Video Formats?
+Earlier in this tutorial, you have seen that you might have to convert your videos to different formats to make them play in all browsers.
+Converting videos to different formats can be difficult and time-consuming.
+An easier solution is to let YouTube play the videos in your web page.
+
+YouTube Video Id
+YouTube will display an id (like tgbNymZ7vqY), when you save (or play) a video.
+
+You can use this id, and refer to your video in the HTML code.
+
+Playing a YouTube Video in HTML
+To play your video on a web page, do the following:
+
+Upload the video to YouTube
+Take a note of the video id
+Define an <iframe> element in your web page
+Let the src attribute point to the video URL
+Use the width and height attributes to specify the dimension of the player
+Add any other parameters to the URL (see below)
+
+Example - Using iFrame (recommended)
+<iframe width="420" height="315"
+src="https://www.youtube.com/embed/tgbNymZ7vqY">
+</iframe>
+
+YouTube Autoplay
+You can have your video start playing automatically when a user visits that page by adding a simple parameter to your YouTube URL.
+Note: Take careful consideration when deciding to autoplay your videos. Automatically starting a video can annoy your visitor and end up causing more harm than good.
+Value 0 (default): The video will not play automatically when the player loads.
+Value 1: The video will play automatically when the player loads.
+YouTube - Autoplay
+<iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1">
+</iframe>
+
+********** YouTube Loop
+Value 0 (default): The video will play only once.
+
+Value 1: The video will loop (forever).
+
+*********** YouTube - Loop
+<iframe width="420" height="315"
+src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1">
+</iframe>
+
+NOTE : YouTube - Using <object> or <embed>
+Note: YouTube <object> and <embed> were deprecated from January 2015. You should migrate your videos to use <iframe> instead.

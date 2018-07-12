@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>text demo</title>
+<style>
+p {
+color: blue;
+margin: 8px;
+}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+Add text to the paragraph (notice the bold tag is escaped).
+<p>Test Paragraph.</p>
+<script>
+$( "p" ).text( "<b>Some</b> new text." );
+</script>
+</body>
+</html>

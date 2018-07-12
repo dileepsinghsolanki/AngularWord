@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>prevAll demo</title>
+  <style>
+  div {
+    width: 70px;
+    height: 70px;
+    background: #abc;
+    border: 2px solid black;
+    margin: 10px;
+    float: left;
+  }
+  div.before {
+    border-color: red;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+  <h4> Description: Get all preceding siblings of each element in the set of matched elements, optionally filtered by a selector.. <br> Locate all the divs preceding the last div and give them a class..</h4>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+ <br><br><br><br><br>
+ <ul>
+  <li>list item 1</li>
+  <li>list item 2</li>
+  <li class="third-item">list item 3</li>
+  <li>list item 4</li>
+  <li>list item 5</li>
+</ul>
+
+<script>
+$( "li.third-item" ).prevAll().css( "background-color", "red" );
+$( "div:last" ).prevAll().addClass( "before" );
+</script>
+ 
+</body>
+</html>

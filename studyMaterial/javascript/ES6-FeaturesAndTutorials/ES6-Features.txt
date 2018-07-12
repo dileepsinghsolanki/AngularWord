@@ -1,0 +1,679 @@
+SYNCHRONOUS : 
+You are in a queue to get a movie ticket. You cannot get one until everybody in front of you gets one, and the same applies to the people queued behind you.
+
+ASYNCHRONOUS : 
+You are in a restaurant with many other people. You order your food. Other people can also order their food, they don't have to wait for your food to be cooked and served to you before they can order. In the kitchen restaurant workers are continuously cooking, serving, and taking orders. People will get their food served as soon as it is cooked.
+
+********** ES6 Features  ***************
+Here’s the list of the top 10 best ES6 features for a busy software engineer (in no particular order):
+Default Parameters in ES6
+Template Literals in ES6
+Multi-line Strings in ES6
+Destructuring Assignment in ES6
+Enhanced Object Literals in ES6
+Arrow Functions in ES6
+Promises in ES6
+Block-Scoped Constructs Let and Const
+Classes in ES6
+Modules in ES6
+
+***** History
+1995: JavaScript is born as LiveScript
+1997: ECMAScript standard is established
+1999: ES3 comes out and IE5 is all the rage
+2000–2005: XMLHttpRequest, a.k.a. AJAX, gains popularity in app such as Outlook Web Access (2000) and Oddpost (2002), Gmail (2004) and Google Maps (2005).
+2009: ES5 comes out (this is what most of us use now) with forEach, Object.keys, Object.create (specially for Douglas Crockford), and standard JSON
+2015: ES6/ECMAScript2015 comes out; it has mostly syntactic sugar, because people weren’t able to agree on anything more ground breaking (ES7?)
+Enough with history, let’s get to the business of coding.
+
+****** Features
+1. Default Parameters in ES6
+Remember we had to do these statements to define default parameters:
+
+var link = function (height, color, url) {
+    var height = height || 50
+    var color = color || 'red'
+    var url = url || 'http://azat.co'
+    ...
+}
+
+In ES6, we can put the default values right in the signature of the functions:
+var link = function(height = 50, color = 'red', url = 'http://azat.co') {
+  ...
+}
+
+2. Template Literals in ES6
+Template literals or interpolation in other languages is a way to output variables in the string. So in ES5 we had to break the string like this:
+
+var name = 'Your name is ' + first + ' ' + last + '.'
+var url = 'http://localhost:3000/api/messages/' + id
+
+Luckily, in ES6 we can use a new syntax ${NAME} inside of the back-ticked string:
+
+var name = `Your name is ${first} ${last}.`
+var url = `http://localhost:3000/api/messages/${id}`
+
+Exa:
+var Fname = "Dileep";
+var Lname = "Singh";
+var ID = 10;
+var URL = 'http://localhost:3000/api/messages/'+ID;
+console.log("Your name is: "+ Fname + ' ' + Lname + " And URL IS" + ':' + URL); // ES5
+console.log(`your name is ${Fname} ${Lname}. and Url is: ${URL}`);  // ES6
+
+3. Multi-line Strings in ES6
+Another yummy syntactic sugar is multi-line string. In ES5, we had to use one of these approaches:
+
+var roadPoem = 'Then took the other, as just as fair,\n\t'
+    + 'And having perhaps the better claim\n\t'
+    + 'Because it was grassy and wanted wear,\n\t'
+    + 'Though as for that the passing there\n\t'
+    + 'Had worn them really about the same,\n\t'
+
+	While in ES6, simply utilize the backticks(`):
+
+var roadPoem = `Then took the other, as just as fair,
+    And having perhaps the better claim
+    Because it was grassy and wanted wear,
+    Though as for that the passing there
+    Had worn them really about the same,`
+	
+4. Arrow Functions in ES6
+
+http://exploringjs.com/es6/ch_arrow-functions.html
+
+This ES5 code is creating an array from the messages array:
+
+var ids = ['5632953c4e345e145fdf2df8','563295464e345e145fdf2df9']
+var messages = ids.map(function (value) {
+  return "ID is " + value // explicit return
+})
+
+Will become this in ES6:
+
+var ids = ['5632953c4e345e145fdf2df8','563295464e345e145fdf2df9']
+var messages = ids.map(value => `ID is ${value}`) // implicit return
+Note: 
+The parenthesis () are optional for single params in an arrow function signature. You need them when you use more than one param.
+
+In ES5 the code has function with explicit return:
+
+var ids = ['5632953c4e345e145fdf2df8', '563295464e345e145fdf2df9'];
+var messages = ids.map(function (value, index, list) {
+  return 'ID of ' + index + ' element is ' + value + ' ' // explicit return
+})
+And more eloquent version of the code in ES6 with parenthesis around params and implicit return:
+
+var ids = ['5632953c4e345e145fdf2df8','563295464e345e145fdf2df9']
+var messages = ids.map((value, index, list) => `ID of ${index} element is ${value} `) // implicit r
+
+5. Promises in ES6
+Let’s consider a rather trivial example of a delayed asynchronous execution with setTimeout():
+
+setTimeout(function(){
+  console.log('Yay!')
+}, 1000)
+We can re-write the code in ES6 with Promise:
+
+var wait1000 =  new Promise(function(resolve, reject) {
+  setTimeout(resolve, 1000)
+}).then(function() {
+  console.log('Yay!')
+})
+
+Or with ES6 arrow functions:
+
+var wait1000 =  new Promise((resolve, reject)=> {
+  setTimeout(resolve, 1000)
+}).then(()=> {
+  console.log('Yay!')
+})
+
+6. Block-Scoped Constructs Let and Const
+
+var => variables can be re-declared and updated
+let =>  is block scoped it can be updated but not re-declared.
+const => declarations are block scoped it cannot be updated or re-declared;
+
+They are very similar when used like this outside a function block.
+
+let me = 'go';  // globally scoped
+var i = 'able'; // globally scoped
+However, global variables defined with let will not be added as properties on the global window object like those defined with var.
+
+console.log(window.me); // undefined
+console.log(window.i); // 'able'
+
+function calculateTotalAmount (vip) {
+  var amount = 0
+  if (vip) {
+    var amount = 1
+  }
+  { // more crazy blocks!
+    var amount = 100
+    {
+      var amount = 1000
+      }
+  }  
+  return amount
+}
+
+console.log(calculateTotalAmount(true))
+The result will be 1000. Wow! That’s a really bad bug. In ES6, we use let to restrict the scope to the blocks. Vars are function scoped.
+
+function calculateTotalAmount (vip) {
+  var amount = 0 // probably should also be let, but you can mix var and let
+  if (vip) {
+    let amount = 1 // first amount is still 0
+  } 
+  { // more crazy blocks!
+    let amount = 100 // first amount is still 0
+    {
+      let amount = 1000 // first amount is still 0
+      }
+  }  
+  return amount
+}
+
+console.log(calculateTotalAmount(true))
+The value is 0, because the if block also has let. If it had nothing (amount=1), then the expression would have been 1.
+
+When it comes to const, things are easier; it’s just an immutable, and it’s also block-scoped like let. Just to demonstrate, here are a bunch of constants and they all are okay because they belong to different blocks:
+
+function calculateTotalAmount (vip) {
+  const amount = 0  
+  if (vip) {
+    const amount = 1 
+  } 
+  { // more crazy blocks!
+    const amount = 100 
+    {
+      const amount = 1000
+      }
+  }  
+  return amount
+}
+
+console.log(calculateTotalAmount(true))
+In my humble opinion, let and const overcomplicate the language. Without them we had only one behavior, now there are multiple scenarios to consider. ;-(
+
+7. Classes in ES6
+Object Orientation is a software development paradigm that follows real-world modelling. Object Orientation, considers a program as a collection of objects that communicates with each other via mechanism called methods. ES6 supports these object-oriented components too.
+
+Object-Oriented Programming Concepts
+To begin with, let us understand
+
+Object − An object is a real-time representation of any entity (  which can be seen or touched). According to Grady Brooch, every object is said to have 3 features −
+
+State − Described by the attributes of an object.
+
+Behavior − Describes how the object will act.
+
+Identity − A unique value that distinguishes an object from a set of similar such objects.
+
+Class − A class in terms of OOP is a blueprint for creating objects. A class encapsulates data for the object.
+
+Method − Methods facilitate communication between objects.
+
+Let us translate these Object-Oriented concepts to the ones in the real world. For example: A car is an object that has data (make, model, number of doors, Vehicle Number, etc.) and functionality (accelerate, shift, open doors, turn on headlights, etc.)
+
+Prior to ES6, creating a class was a fussy affair. Classes can be created using the class keyword in ES6.
+
+Classes can be included in the code either by declaring them or by using class expressions.
+
+Syntax: Declaring a Class
+class Class_name {  
+}
+Syntax: Class Expressions
+var var_name = new Class_name {  
+} 
+The class keyword is followed by the class name. The rules for identifiers (already discussed) must be considered while naming a class.
+
+A class definition can include the following −
+
+Constructors − Responsible for allocating memory for the objects of the class.
+
+Functions − Functions represent actions an object can take. They are also at times referred to as methods.
+
+These components put together are termed as the data members of the class.
+
+Note − A class body can only contain methods, but not data properties.
+
+Example: Declaring a class
+class Polygon { 
+   constructor(height, width) { 
+      this.height = height; 
+      this.width = width; 
+   } 
+}
+Example: Class Expression
+var Polygon = class { 
+   constructor(height, width) { 
+      this.height = height; 
+      this.width = width; 
+   } 
+}
+The above code snippet represents an unnamed class expression. A named class expression can be written as.
+
+var Polygon = class Polygon { 
+   constructor(height, width) { 
+      this.height = height; 
+      this.width = width; 
+   } 
+}
+Note − Unlike variables and functions, classes cannot be hoisted.
+
+Creating Objects
+To create an instance of the class, use the new keyword followed by the class name. Following is the syntax for the same.
+
+var object_name= new class_name([ arguments ]) 
+Where,
+
+The new keyword is responsible for instantiation.
+
+The right hand side of the expression invokes the constructor. The constructor should be passed values if it is parameterized.
+
+Example: Instantiating a class
+var obj = new Polygon(10,12)
+Accessing Functions
+A class’s attributes and functions can be accessed through the object. Use the ‘.’ dot notation (called as the period) to access the data members of a class.
+
+//accessing a function 
+obj.function_name()
+Example: Putting them together
+'use strict' 
+class Polygon { 
+   constructor(height, width) { 
+      this.h = height; 
+      this.w = width;
+   } 
+   test() { 
+      console.log("The height of the polygon: ", this.h) 
+      console.log("The width of the polygon: ",this. w) 
+   } 
+} 
+
+//creating an instance  
+var polyObj = new Polygon(10,20); 
+polyObj.test();      
+The Example given above declares a class ‘Polygon’. The class’s constructor takes two arguments - height and width respectively. The ‘this’ keyword refers to the current instance of the class. In other words, the constructor above initializes two variables h and w with the parameter values passed to the constructor. The test () function in the class, prints the values of the height and width.
+
+To make the script functional, an object of the class Polygon is created. The object is referred to by the polyObj variable. The function is then called via this object.
+
+The following output is displayed on successful execution of the above code.
+
+The height of the polygon:  10 
+The width of the polygon:  20 
+The Static Keyword
+The static keyword can be applied to functions in a class. Static members are referenced by the class name.
+
+Example
+'use strict' 
+class StaticMem { 
+   static disp() { 
+      console.log("Static Function called") 
+   } 
+} 
+StaticMem.disp() //invoke the static metho
+Note − It is not mandatory to include a constructor definition. Every class by default has a constructor by default.
+
+The following output is displayed on successful execution of the above code.
+
+Static Function called
+The instanceof operator
+The instanceof operator returns true if the object belongs to the specified type.
+
+Example
+'use strict' 
+class Person{ } 
+var obj = new Person() 
+var isPerson = obj instanceof Person; 
+console.log(" obj is an instance of Person " + isPerson); 
+The following output is displayed on successful execution of the above code.
+
+obj is an instance of Person True 
+Class Inheritance
+ES6 supports the concept of Inheritance. Inheritance is the ability of a program to create new entities from an existing entity - here a class. The class that is extended to create newer classes is called the parent class/super class. The newly created classes are called the child/sub classes.
+
+A class inherits from another class using the ‘extends’ keyword. Child classes inherit all properties and methods except constructors from the parent class.
+
+Following is the syntax for the same.
+
+class child_class_name extends parent_class_name
+Example: Class Inheritance
+'use strict' 
+class Shape { 
+   constructor(a) { 
+      this.Area = a
+   } 
+} 
+class Circle extends Shape { 
+   disp() { 
+      console.log("Area of the circle:  "+this.Area) 
+   } 
+} 
+var obj = new Circle(223); 
+obj.disp() 
+The above example declares a class Shape. The class is extended by the Circle class. Since, there is an inheritance relationship between the classes, the child class i.e., the class Circle gets an implicit access to its parent class attribute i.e., area.
+
+The following output is displayed on successful execution of the above code.
+
+Area of Circle: 223
+Inheritance can be classified as −
+
+Single − Every class can at the most extend from one parent class.
+
+Multiple − A class can inherit from multiple classes. ES6 doesn’t support multiple inheritance.
+
+Multi-level − Consider the following example.
+
+'use strict' 
+class Root { 
+   test() { 
+      console.log("call from parent class") 
+   } 
+} 
+class Child extends Root {} 
+class Leaf extends Child   
+
+//indirectly inherits from Root by virtue of inheritance {} 
+var obj = new Leaf();
+obj.test() 
+The class Leaf derives the attributes from the Root and the Child classes by virtue of multilevel inheritance.
+
+The following output is displayed on successful execution of the above code.
+
+call from parent class
+Class Inheritance and Method Overriding
+Method Overriding is a mechanism by which the child class redefines the superclass method. The following example illustrates the same −
+
+'use strict' ;
+class PrinterClass { 
+   doPrint() { 
+      console.log("doPrint() from Parent called… ");
+   }
+}
+class StringPrinter extends PrinterClass { 
+   doPrint() { 
+      console.log("doPrint() is printing a string…"); 
+   } 
+} 
+var obj = new StringPrinter(); 
+obj.doPrint();
+In the above Example, the child class has changed the superclass function’s implementation.
+
+The following output is displayed on successful execution of the above code.
+
+doPrint() is printing a string… 
+The Super Keyword
+ES6 enables a child class to invoke its parent class data member. This is achieved by using the super keyword. The super keyword is used to refer to the immediate parent of a class.
+
+Consider the following example −
+
+'use strict' 
+class PrinterClass { 
+   doPrint() {
+      console.log("doPrint() from Parent called…") 
+   } 
+}  
+class StringPrinter extends PrinterClass { 
+   doPrint() { 
+      super.doPrint() 
+      console.log("doPrint() is printing a string…") 
+   } 
+} 
+var obj = new StringPrinter() 
+obj.doPrint()
+The doPrint() redefinition in the class StringWriter, issues a call to its parent class version. In other words, the super keyword is used to invoke the doPrint() function definition in the parent class - PrinterClass.
+
+The following output is displayed on successful execution of the above code.
+
+doPrint() from Parent called. 
+doPrint() is printing a string. 
+
+******** Closure 
+The closure is an inner function which always has access to the variables and parameters of its outer function, even when the outer function has returned.
+function init() {
+    var name = "Dileep Singh"; // name is a local variable created by init
+    function displayName() { // displayName() is the inner function, a closure
+        alert (name); // displayName() uses variable declared in the parent function    
+    }
+    return displayName();    
+}
+init();
+
+********** Hoisted
+Hoisting is JavaScript's default behavior of moving declarations to the top.
+In JavaScript, a variable can be declared after it has been used.
+In other words; a variable can be used before it has been declared.
+
+(function() {
+hero = "dileep";
+    console.log(hero); 
+    var hero; 
+})();
+
+Note:
+JavaScript Initializations are Not Hoisted
+JavaScript only hoists declarations, not initializations.
+(function() {
+    console.log(hero); 
+    var hero = "dileep; 
+})();
+
+NOTE => Hoisting of const
+
+Just like let, const declarations are hoisted to the top but are not initialized.
+
+So just in case, you missed the differences, here they are :
+
+var declarations are globally scoped or function scoped while let and const are block scoped.
+
+var variables can be updated and re-declared within its scope; let variables can be updated but not re-declared; const variables can neither be updated nor re-declared.
+
+They are all hoisted to the top of their scope but while varvariables are initialized with undefined, let and const variables are not initialized.
+
+While var and let can be declared without being initialized, const must be initialized during declaration.
+
+
+************ Identifier
+avaScript Identifiers are names; names that you give things in JavaScript. These JavaScript “things” include
+
+variables
+functions
+objects
+properties
+methods
+events
+
+Like much of JavaScript, there are rules to be followed.
+
+Identifiers can only contain letters, numbers, underscore (_) and the dollar sign ($).
+Identifiers cannot start with a number.
+Identifiers are case-sensitive.
+Identifiers can be any length.
+Identifiers can not be the same as JavaScript reserved words. (See list of reserved words)
+Don’t use global properties and methods as identifiers (more later).
+Don’t use words similar to reserved words.
+
+
+************** From for to forEach() to for-of 
+Strings are iterable, which means that you can use for-of to iterate over their characters:
+
+for (const ch of 'abc') {
+    console.log(ch);
+}
+// Output:
+// a
+// b
+// c
+
+=> And you can use the spread operator (...) to turn strings into Arrays:
+
+const chars = [...'abc'];
+    // ['a', 'b', 'c']
+
+Prior to ES5, you iterated over Arrays as follows:
+
+var arr = ['a', 'b', 'c'];
+for (var i=0; i<arr.length; i++) {
+    var elem = arr[i];
+    console.log(elem);
+}
+In ES5, you have the option of using the Array method forEach():
+
+arr.forEach(function (elem) {
+    console.log(elem);
+});
+A for loop has the advantage that you can break from it, forEach() has the advantage of conciseness.
+
+In ES6, the for-of loop combines both advantages:
+
+const arr = ['a', 'b', 'c'];
+for (const elem of arr) {
+    console.log(elem);
+}
+If you want both index and value of each array element, for-of has got you covered, too, via the new Array method entries() and destructuring:
+
+for (const [index, elem] of arr.entries()) {
+    console.log(index+'. '+elem);
+}
+
+***************** New string methods 
+The ECMAScript 6 standard library provides several new methods for strings.
+
+From indexOf to startsWith:
+
+if (str.indexOf('x') === 0) {} // ES5
+if (str.startsWith('x')) {} // ES6
+From indexOf to endsWith:
+
+function endsWith(str, suffix) { // ES5
+  var index = str.indexOf(suffix);
+  return index >= 0
+    && index === str.length-suffix.length;
+}
+str.endsWith(suffix); // ES6
+From indexOf to includes:
+
+if (str.indexOf('x') >= 0) {} // ES5
+if (str.includes('x')) {} // ES6
+From join to repeat (the ES5 way of repeating a string is more of a hack):
+
+new Array(3+1).join('#') // ES5
+'#'.repeat(3) // ES6
+
+New string methods:
+
+> 'hello'.startsWith('hell')
+true
+> 'hello'.endsWith('ello')
+true
+> 'hello'.includes('ell')
+true
+> 'doo '.repeat(3)
+'doo doo doo '
+
+
+ ****** Array Method
+ In ES6, fill() is a simpler alternative:
+
+const arr2 = new Array(2).fill(undefined);
+    // [undefined, undefined]
+fill() is even more convenient if you want to create an Array that is filled with an arbitrary value:
+
+// ES5
+var arr3 = Array.apply(null, new Array(2))
+    .map(function (x) { return 'x' });
+    // ['x', 'x']
+
+// ES6
+const arr4 = new Array(2).fill('x');
+    // ['x', 'x']
+fill() replaces all Array elements with the given value. Holes are treated as if they were elements.
+
+
+************Array.from()
+Array.from()’s basic functionality is to convert two kinds of values to Arrays:
+
+Array-like values, which have a property length and indexed elements. Examples include the results of DOM operations such as document.getElementsByClassName().
+Iterable values, whose contents can be retrieved one element at a time. Strings and Arrays are iterable, as are ECMAScript’s new data structures Map and Set.
+The following is an example of converting an Array-like object to an Array:
+
+const arrayLike = { length: 2, 0: 'a', 1: 'b' };
+
+// for-of only works with iterable values
+for (const x of arrayLike) { // TypeError
+    console.log(x);
+}
+
+const arr = Array.from(arrayLike);
+for (const x of arr) { // OK, iterable
+    console.log(x);
+}
+// Output:
+// a
+// b
+
+
+************* Destructuring Assignment in ES6- Arrays
+Destructuring assignment is a cool feature that came along with ES6. Destructuring is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables. That is, we can extract data from arrays and objects and assign them to variables. 
+
+// Array Destructing
+var num = [10,20,30,40,50];
+var [One, Two, Three, Four, Five] = num;
+console.log(One,Two,Three,Four,Five);
+VM252646:4 10 20 30 40 50
+
+You can also destructure in a for-of loop:
+
+const arr = ['a', 'b'];
+for (const [index, element] of arr.entries()) {
+    console.log(index, element);
+}
+// Output:
+// 0 a
+// 1 b
+
+Using Default Values
+Default values can be assigned to the variables just in case the value extracted from the array is undefined.
+    var[greeting = "hi",name = "Sarah"] = ["hello"];
+    console.log(greeting);//"Hello"
+    console.log(name);//"Sarah"
+
+*********** Interface  **************
+=> Class impliment Interface
+=> interface also impliments interface
+=> interface extends class
+=>Class extends class
+
+Interfaces Extending Classes
+When an interface type extends a class type it inherits the members of the class but not their implementations. It is as if the interface had declared all of the members of the class without providing an implementation. Interfaces inherit even the private and protected members of a base class. This means that when you create an interface that extends a class with private or protected members, that interface type can only be implemented by that class or a subclass of it.
+
+This is useful when you have a large inheritance hierarchy, but want to specify that your code works with only subclasses that have certain properties. The subclasses don’t have to be related besides inheriting from the base class. For example:
+
+class Control {
+    private state: any;
+}
+
+interface SelectableControl extends Control {
+    select(): void;
+}
+
+class Button extends Control implements SelectableControl {
+    select() { }
+}
+
+class TextBox extends Control {
+    select() { }
+}
+
+// Error: Property 'state' is missing in type 'Image'.
+class Image implements SelectableControl {
+    select() { }
+}
+
+class Location {
+
+}	
+	

@@ -1,0 +1,190 @@
+**************Geolocation
+The HTML Geolocation API is used to locate a user's position.
+********** Locate the User's Position
+The HTML Geolocation API is used to get the geographical position of a user.
+
+********** Using HTML Geolocation
+The getCurrentPosition() method is used to return the user's position.
+
+The example below returns the latitude and longitude of the user's position:
+
+Example
+<script>
+var x = document.getElementById("demo");
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude; 
+}
+</script>
+
+Example explained:
+Check if Geolocation is supported
+If supported, run the getCurrentPosition() method. If not, display a message to the user
+If the getCurrentPosition() method is successful, it returns a coordinates object to the function specified in the parameter (showPosition)
+The showPosition() function outputs the Latitude and Longitude
+
+The getCurrentPosition() Method - Return Data
+The getCurrentPosition() method returns an object on success. The latitude, longitude and accuracy properties are always returned. The other properties are returned if available:
+
+Property	Returns
+coords.latitude	The latitude as a decimal number (always returned)
+coords.longitude	The longitude as a decimal number (always returned)
+coords.accuracy	The accuracy of position (always returned)
+coords.altitude	The altitude in meters above the mean sea level (returned if available)
+coords.altitudeAccuracy	The altitude accuracy of position (returned if available)
+coords.heading	The heading as degrees clockwise from North (returned if available)
+coords.speed	The speed in meters per second (returned if available)
+timestamp	The date/time of the response (returned if available)
+
+Geolocation Object - Other interesting Methods
+The Geolocation object also has other interesting methods:
+
+************ watchPosition()
+watchPosition() - Returns the current position of the user and continues to return updated position as the user moves (like the GPS(Global Positioning System) in a car).
+clearWatch() - Stops the watchPosition() method.
+The example below shows the watchPosition() method. You need an accurate GPS device to test this (like iPhone):
+
+Example
+<script>
+var x = document.getElementById("demo");
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude; 
+}
+</script>
+
+********** Drag and Drop
+Drag and drop is a very common feature. It is when you "grab" an object and drag it to a different location.
+In HTML5, drag and drop is part of the standard: Any element can be draggable.
+********* Drag and Drop Process
+Following are the steps to be carried out to implement Drag and Drop operation −
+
+Step 1 - Making an Object Draggable
+Here are steps to be taken −
+If you want to drag an element, you need to set the draggable attribute to true for that element.
+Set an event listener for dragstart that stores the data being dragged.
+The event listener dragstart will set the allowed effects (copy, move, link, or some combination).
+
+Make an Element Draggable
+First of all: To make an element draggable, set the draggable attribute to true:
+
+<img draggable="true">
+What to Drag - ondragstart and setData()
+Then, specify what should happen when the element is dragged.
+
+In the example above, the ondragstart attribute calls a function, drag(event), that specifies what data to be dragged.
+
+The dataTransfer.setData() method sets the data type and the value of the dragged data:
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+In this case, the data type is "text" and the value is the id of the draggable element ("drag1").
+
+*********** Web Storage
+HTML web storage; better than cookies.
+What is HTML Web Storage?
+With web storage, web applications can store data locally within the user's browser.
+Before HTML5, application data had to be stored in cookies, included in every server request. Web storage is more secure, and large amounts of data can be stored locally, without affecting website performance.
+Unlike cookies, the storage limit is far larger (at least 5MB) and information is never transferred to the server.
+
+HTML Web Storage Objects
+HTML web storage provides two objects for storing data on the client:
+
+window.localStorage - stores data with no expiration date
+window.sessionStorage - stores data for one session (data is lost when the browser tab is closed)
+Before using web storage, check browser support for localStorage and sessionStorage:
+
+if (typeof(Storage) !== "undefined") {
+    // Code for localStorage/sessionStorage.
+} else {
+    // Sorry! No Web Storage support..
+}
+
+*********** The localStorage Object
+The localStorage object stores the data with no expiration date. The data will not be deleted when the browser is closed, and will be available the next day, week, or year.
+Example
+// Store
+localStorage.setItem("lastname", "Smith");
+// Retrieve
+document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+Web storage is per origin (per domain and protocol). All pages, from one origin, can store and access the same data.
+
+Example explained:
+Create a localStorage name/value pair with name="lastname" and value="Smith"
+Retrieve the value of "lastname" and insert it into the element with id="result"
+The example above could also be written like this:
+// Store
+localStorage.lastname = "Smith";
+// Retrieve
+document.getElementById("result").innerHTML = localStorage.lastname;
+The syntax for removing the "lastname" localStorage item is as follows:
+localStorage.removeItem("lastname");
+
+************ The sessionStorage Object
+The sessionStorage object is equal to the localStorage object, except that it stores the data for only one session. The data is deleted when the user closes the specific browser tab.
+
+if (sessionStorage.clickcount) {
+    sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+} else {
+    sessionStorage.clickcount = 1;
+}
+document.getElementById("result").innerHTML = "You have clicked the button " +
+sessionStorage.clickcount + " time(s) in this session.";
+
+The following example counts the number of times a user has clicked a button, in the current session:
+
+******** Webworker 
+A web worker is a JavaScript that runs in the background, independently of other scripts, without affecting the performance of the page. You can continue to do whatever you want: clicking, selecting things, etc., while the web worker runs in the background.
+
+Check Web Worker Support
+Before creating a web worker, check whether the user's browser supports it:
+
+if (typeof(Worker) !== "undefined") {
+    // Yes! Web worker support!
+    // Some code.....
+} else {
+    // Sorry! No Web Worker support..
+}
+
+*********** Create a Web Worker File
+Now, let's create our web worker in an external JavaScript.
+
+Here, we create a script that counts. The script is stored in the "demo_workers.js" file:
+
+var i = 0;
+
+function timedCount() {
+    i = i + 1;
+    postMessage(i);
+    setTimeout("timedCount()",500);
+}
+
+
+********** SSE (Server-Sent Events)
+Server-Sent Events allow a web page to get updates from a server.
+
+Server-Sent Events - One Way Messaging
+A server-sent event is when a web page automatically gets updates from a server.
+
+This was also possible before, but the web page would have to ask if any updates were available. With server-sent events, the updates come automatically.
+
+Examples: Facebook/Twitter updates, stock price updates, news feeds, sport results, etc.
+
+timedCount();
+
+NOTE: The important part of the code above is the postMessage() method - which is used to post a message back to the HTML page.

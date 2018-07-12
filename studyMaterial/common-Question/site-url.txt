@@ -1,0 +1,342 @@
+*** Electricity Bil Payment site ( G2018418175141419 )
+https://www.mponline.gov.in/Portal/Services/MPEB/Citizen/MPWZ/RequestBill_RS.aspx
+
+******* Dummy Rest API ****************
+http://dummy.restapiexample.com/
+
+*** TypeScript ******
+http://www.dotnetcurry.com/typescript/1287/typescript-quick-start-tutorial
+
+ Editor
+ visual stduo code
+
+code differ
+https://www.diffchecker.com/
+
+1:Pagination LInk
+https://codepen.io/cornflourblue/pen/KVeaQL
+
+2: rang
+https://stackoverflow.com/questions/3895478/does-javascript-have-a-method-like-range-to-generate-an-array-based-on-suppl
+
+3: Slim scroll-CSS
+https://codepen.io/GhostRider/pen/GHaFw
+
+4: add Hours:miunte:second from movement.js
+https://stackoverflow.com/questions/17333425/add-a-duration-to-a-moment-moment-js
+https://stackoverflow.com/questions/43474986/how-to-add-minutes-in-moment-js-with-a-hhmm-format
+
+5: Custom toaster
+ https://github.com/jirikavi/AngularJS-Toaster
+ 
+6: Movement.js
+ http://momentjs.com/docs/#/durations/hours/
+ 
+7: Text editor
+ http://wysibb.com/demo/
+ 
+8: TintMCE
+ http://plnkr.co/edit/04AFkp?p=preview
+ 
+9: International Telephone
+ Angular :  https://github.com/hodgepodgers/ng-intl-tel-input
+ Jquery : https://github.com/jackocnr/intl-tel-input
+ 
+10: SElct All Check Box
+ https://jsfiddle.net/0vb4gapj/1/
+ 
+11: email Validation
+ https://www.formget.com/regular-expression-for-email/
+ http://www.aorank.com/tutorial/validate-email-id-by-regex/index.php
+ 
+ exa: Runninggggggg 
+ 
+ /********* Slider *************/
+ https://www.npmjs.com/package/angular-ui-carousel
+ note: dynamic add item
+ https://mihnsen.github.io/ui-carousel/
+ https://github.com/mihnsen/ui-carousel
+ 
+12: move forwod directory
+ http://jsfiddle.net/z02L5gbx/
+ 
+13: Image Cropped using [ngFileUpload]
+ http://jsfiddle.net/danialfarid/xxo3sk41/590/
+ 
+ /* Service use as global objec*/*/
+14: http://jsfiddle.net/pkozlowski_opensource/BRWPM/2/
+ 
+ /* Add More */
+ https://embed.plnkr.co/plunk/7nSdmC
+ http://www.shanidkv.com/blog/angularjs-adding-form-fields-dynamically
+ https://embed.plnkr.co/6YPQXH/  //Angular4
+ 
+ /* Recieve Real Time Notification */
+ http://jmesnil.net/stomp-websocket/doc/
+ 
+ /*Get mime type of file*/
+ https://npm.runkit.com/mime-types
+ 
+ https://github.com/broofa/node-mime/blob/master/README.md
+ 
+ 
+ 
+ 	$(document).on('click', '.intl-tel-input .country', function() {
+        $timeout(function(){
+            $scope.moredetails.mobno = '';
+        },200);  
+    });
+	
+	
+	/*  	$scope.$on('$viewContentLoaded', function(event) {
+		$timeout(function(){
+			console.log("idsssssssssss", $("#registrationMobile"), $scope.loginDetail);
+			$("#registrationMobile").intlTelInput({
+	    		'separateDialCode':true, 
+			});
+		},5000);                 
+    });*/
+
+/*	$scope.$watch('loginDetail', function() {  
+	console.log("");    
+      if($scope.loginDetail == true){
+			console.log("idsssssssssss", $("#registrationMobile"), $scope.loginDetail);
+			$("#registrationMobile").intlTelInput({
+	    		'separateDialCode':true,
+	    		'initialCountry': "us",
+			});
+
+      }                          
+    }, true);*/
+	
+	
+	ngIntlTelInput.set({separateDialCode: true});
+	ngIntlTelInput.set({initialCountry: attr.initialCountry});
+	
+	
+****  Upload Image **** 
+https://github.com/danialfarid/ng-file-upload
+
+	https://jsfiddle.net/alexk111/rw6q9/
+	https://www.npmjs.com/package/angular-img-cropper
+	
+	Runninggggggg
+	https://stackoverflow.com/questions/37817763/how-do-you-use-ng-file-upload-and-ngimgcrop
+	http://jsfiddle.net/danialfarid/xxo3sk41/590/
+	http://jsfiddle.net/xxo3sk41/1825/
+	
+	Running Demo ngImgCrop
+	http://jsfiddle.net/melnikovkolya/a2ew3yhf/2/
+	https://www.npmjs.com/package/ng-img-crop-dynamic
+	
+**** Select Trgger  *******
+https://stackoverflow.com/questions/13234971/simulate-click-on-select-element-with-jquery
+http://jsfiddle.net/vWx2H/456/	
+
+********** $filter(filter) ***********
+http://jsfiddle.net/jwcarroll/VfEcp/
+
+**** Infinite Scroll  ******
+https://codepen.io/akagr/pen/Koagx
+http://jsfiddle.net/vojtajina/U7Bz9/
+
+*** Table Sorting *****
+https://plnkr.co/edit/?p=preview
+
+/********** Angular2
+http://www.angulartypescript.com/angular-2-router-example/
+https://developer.telerik.com/featured/super-fast-setup-angular-2-components-component-router/
+/** Component Intrection ***/
+http://www.codershood.info/2016/10/09/passing-data-angular-2-components/
+https://www.infragistics.com/community/blogs/dhananjay_kumar/archive/2016/12/13/communication-between-components-using-input-in-angular-2.aspx
+
+************ Redux ****/
+https://julienrenaux.fr/2016/08/03/introduction-to-redux-and-angular2/
+https://www.npmjs.com/package/ng2-redux#installation
+
+********** Obserable  ******************
+https://github.com/m-hassan-tariq/RestfulWebserviceForAngular2UsingObservable#http-get-code-web-api-observableservicets
+https://thinkster.io/tutorials/angular-2-http
+https://hassantariqblog.wordpress.com/2016/12/03/restful-webservice-for-angular2-using-observable/?blogsub=confirming#blog_subscription-2
+
+
+https://angular.io/guide/http
+https://www.barbarianmeetscoding.com/blog/2016/04/02/getting-started-with-angular-2-step-by-step-6-consuming-real-data-with-http/
+https://angular.io/tutorial/toh-pt4
+https://www.metaltoad.com/blog/angular-2-http-observables-and-concurrent-data-loading
+
+******* Route Parameter ***********
+https://www.guru99.com/angularjs-routes.html
+https://www.guru99.com/angularjs-routes.html#1
+
+**** Search Custon Pipe  ***************
+http://www.advancesharp.com/blog/1211/angular-2-search-and-sort-with-ngfor-repeater-with-example // search
+https://codeburst.io/create-a-search-pipe-to-dynamically-filter-results-with-angular-4-21fd3a5bec5c
+https://www.npmjs.com/package/angular2-pipes // Useful pipes for Angular with no external dependencies
+
+******** Direct plugin for order by ***********************
+https://www.npmjs.com/package/ng2-order-pipe
+npm install  ng2-order-pipe --save
+
+IN Module.ts/
+import { Ng2OrderModule } from 'ng2-order-pipe';
+imports: [Ng2OrderModule],
+
+
+In Component
+export class AppComponent {
+  order: string = 'name';
+}
+in HTML
+<li *ngFor="let item of array | orderBy: order">
+
+**** Built in pipe  *******************
+https://v2.angular.io/docs/ts/latest/api/
+
+************* services  ****************
+https://www.barbarianmeetscoding.com/blog/2016/04/02/getting-started-with-angular-2-step-by-step-6-consuming-real-data-with-http/
+https://scotch.io/tutorials/angular-2-http-requests-with-observables
+
+***** top bottom scroll  *********************
+http://jsbin.com/unesi3/279/edit?html,css,js,console
+http://www.devcurry.com/2010/10/use-jquery-to-scroll-to-bottom-or-top.html
+
+
+**** Form Validation ****************
+https://www.npmjs.com/package/ng2-validation
+https://coryrylan.com/blog/angular-form-builder-and-validation-management
+https://stackblitz.com/edit/angular-5hwcff?file=app%2Fcontrol-messages.component.ts
+https://scotch.io/courses/angular-2-forms-and-validation
+http://jasonwatmore.com/post/2016/09/29/angular-2-user-registration-and-login-example-tutorial
+
+********* Javascript  ****************
+https://coderwall.com/p/_ggh2w/the-array-native-every-filter-map-some-foreach-methods
+
+/*** Pagination ***/
+http://jasonwatmore.com/post/2016/08/23/angular-2-pagination-example-with-logic-like-google
+
+/*** Loacl storage and Session Storage ****/
+https://alligator.io/js/introduction-localstorage-sessionstorage/
+
+/***  Directive   ******/
+http://blogs.quovantis.com/scope-in-custom-directives-angularjs/
+
+************** CheckBox
+http://jsfiddle.net/2jm6x4co/
+http://jsfiddle.net/TKVH6/840/
+https://jsfiddle.net/rjhrrrfy/
+
+*********** Slim Scroll angular ****************
+https://github.com/ytlabs/ng-slim-scroll/blob/master/index.html
+https://rawgit.com/ytlabs/ng-slim-scroll/master/index.html
+
+*********** Swipe ******************
+https://lyfeyaj.github.io/swipe/
+
+**************** Ng-show ngh-ide ********************
+https://www.aspsnippets.com/Articles/AngularJS-Show-Hide-Toggle-HTML-DIV-on-Button-click-using-ng-show-and-ng-hide.aspx
+
+http://jasonwatmore.com/post/2016/12/01/angular-2-communicating-between-components-with-observable-subject
+
+https://github.com/cornflourblue/angular2-communicating-between-components
+
+http://jasonwatmore.com/post/2016/12/01/angular-2-communicating-between-components-with-observable-subject
+
+
+*********** Angular site *************
+https://ciphertrick.com/2016/02/22/infinite-scroll-angularjs/
+
+*************** Sort Array  **************
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+
+
+/*******************************
+https://medium.com/@ryanchenkie_40935/angular-authentication-using-route-guards-bf7a4ca13ae3
+http://www.sparkbit.pl/angular-2-route-guards-real-life-example/
+https://github.com/angular/angular/issues/17359
+
+/************ Angular Dashboard Theme  **********************/
+https://github.com/start-angular/SB-Admin-BS4-Angular-5
+https://www.strapui.com/
+
+*** file upload  ****************
+http://www.angulartutorial.net/2018/01/file-upload-and-send-data-to-backend.html
+
+https://www.npmjs.com/package/angular-file
+https://github.com/AckerApple/angular-file
+https://ackerapple.github.io/angular-file/
+https://github.com/valor-software/ng2-file-upload /**** ng2-file-upload ***********
+
+************  Reducer  ****************
+http://blog.ng-book.com/introduction-to-redux-with-typescript-and-angular-2/#whats-a-reducer
+
+/*** Cropping Image  ***/
+https://www.npmjs.com/package/ngx-image-cropper
+https://github.com/Mawi137/ngx-image-cropper
+
+https://github.com/web-dave/ngx-img-cropper
+
+/************ Validation Form  **********************/
+https://www.toptal.com/angular-js/angular-4-forms-validation
+
+
+/********** Angular js ***************
+http://www.dotnettricks.com/learn/angularjs/understanding-angularjs-watch-digest-and-apply
+
+/************** Image Compresss **************/
+https://github.com/oukan/angular-image-compress
+
+/************* canvas  **************/
+https://www.w3schools.com/tags/ref_canvas.asp
+
+.************* Back Button Privent
+http://imalhasaranga.com/2017/07/30/listening-to-route-changes-angular-2-4/
+https://hassantariqblog.wordpress.com/2016/10/29/angular2-detect-change-in-route-in-angular2/
+
+*********** Login Template
+https://www.template.net/web-templates/htmlcss-templates/signup-form/
+https://cuppalabs.github.io/tutorials/how-to-implement-angular2-form-validations/
+
+************** Error handling ***************
+https://stackoverflow.com/questions/46019771/catching-errors-in-angular-httpclient
+
+************ Unit Testinggggggggggg ******************
+https://codecraft.tv/courses/angular/unit-testing/jasmine-and-karma/#_setup_and_teardown
+https://jasmine.github.io/tutorials/your_first_suite
+http://plnkr.co/edit/8ApdkvletoEc4Q0maXSN?p=preview
+
+
+********* Material design in angular4  ( MDBootstrap) *************
+https://coursetro.com/posts/code/132/Material-Design-Bootstrap-4-and-Angular-5-Tutorial---MdBootstrap
+https://mdbootstrap.com/angular/layout/media/
+
+********* Login & Registraion with API in angular2 
+http://jasonwatmore.com/post/2016/09/29/angular-2-user-registration-and-login-example-tutorial
+
+********* MultiLanguage Angular4
+https://medium.com/letsboot/translate-angular-4-apps-with-ngx-translate-83302fb6c10d
+
+***** Angular Capcha
+https://jsfiddle.net/6jqmv68d/2/    // Workingggggggggg
+http://jsfiddle.net/hspxaeqa/10/
+https://github.com/pemre/jquery-captcha-basic
+	
+*********** Angular 2/4/6 Doc  *****************
+http://www.eduforbetterment.com/angular2/	
+
+************** Material angular Table
+https://stackblitz.com/edit/material2-beta11-vmwjpe?file=app%2Fapp.component.ts
+https://stackblitz.com/angular/vrmkrmvvbkk?file=app%2Ftable-basic-example.html
+
+*********** Localstorage  ****************
+https://www.npmjs.com/package/ngx-store
+
+************ Admin Guard *******************
+ ng g guard auth/admin
+https://dzone.com/articles/real-world-angular-series-part-4a-access-managemen
+
+************* Html Rendering (Property Binding vs Interpolation)
+https://www.dev6.com/Angular-2-HTML-binding
+
+*********** mobile no. validation
+https://github.com/kondi0/ng4-intl-phone/blob/master/README.md

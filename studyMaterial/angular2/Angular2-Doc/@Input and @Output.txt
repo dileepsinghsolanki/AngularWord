@@ -1,0 +1,8 @@
+@Input and @Output
+Input and Output are two decorators in Angular responsible for communication between two components.
+
+Decorator
+A decorator is a function that is invoked with @ prefix and followed by class, method, property.
+Ex:
+@Input()
+description: string;

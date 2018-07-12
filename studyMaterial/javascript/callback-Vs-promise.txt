@@ -1,0 +1,76 @@
+******* callback
+When a function simply accepts another function as an argument, this contained function is known as a callback function. Using callback functions is a core functional programming concept, and you can find them in most JavaScript code; either in simple functions like setInterval, event listening or when making API calls.
+Callback functions are written like so:
+
+setInterval(function() {
+  console.log('hello!');
+}, 1000);
+
+******** callback hell
+Multiple functions can be created independently and used as callback functions. These create multi-level functions. When this function tree created becomes too large, the code becomes incomprehensible sometimes and is not easily refactored. This is known as callback hell. 
+
+// a bunch of functions are defined up here
+
+// lets use our functions in callback hell
+function setInfo(name) {
+  address(myAddress) {
+    officeAddress(myOfficeAddress) {
+      telephoneNumber(myTelephoneNumber) {
+        nextOfKin(myNextOfKin) {
+          console.log('done'); //let's begin to close each function! 
+        };
+      };
+    };
+  };
+}
+
+NOTE: 
+Callback functions are useful for short asynchronous operations. When working with large sets, this is not considered best practice. Because of this challenge, Promises were introduced to simplify deferred activities.
+
+
+****** A promise
+=> Avoid Nestest Callback
+=> Promise should eventually be fulfilled or rejected - do not leave a promise Pending forever.
+
+A promise is used to handle the asynchronous result of an operation. JavaScript is designed to not wait for an asynchrnous block of code to completely execute before other synchronous parts of the code can run. For instance, when making API requests to servers, we have no idea if these servers are offline or online, or how long it takes to process the server request.
+
+With Promises, we can defer execution of a code block until an async request is completed. This way, other operations can keep running without interruption.
+
+Promises have three states:
+
+Pending: This is the initial state of the Promise before an operation begins
+Fulfilled: This means the specified operation was completed
+Rejected: The operation did not complete; an error value is usually thrown
+
+Creating a Promise
+The Promise object is created using the new keyword and contains the promise; this is an executor function which has a resolve and a reject callback. As the names imply, each of these callbacks returns a value with the reject callback returning an error object.
+const promise = new Promise(function(resolve, reject) {
+  // promise description
+})
+
+const weather = true
+const date    = new Promise(function(resolve, reject) {
+  if (weather) {
+    const dateDetails = {
+      name:     'Cubana Restaurant',
+      location: '55th Street',
+      table:    5
+    };
+    resolve(dateDetails)
+  } else {
+    reject(new Error('Bad weather, so no Date'))
+  }
+});
+
+Using Promises
+Using a promise that has been created is relatively straightforward; we chain .then() and .catch() to our Promise like so:
+
+date
+  .then(function(done) {
+    // the content from the resolve() is here
+  })
+  .catch(function(error) {
+    // the info from the reject() is here
+	
+=> .then() receives a function with an argument which is the resolve value of our promise. .catch returns the reject value of our promise.
+  });

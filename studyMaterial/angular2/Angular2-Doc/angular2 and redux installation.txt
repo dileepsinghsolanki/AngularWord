@@ -1,0 +1,90 @@
+ /*** Redux Installation ****/
+1. Ng2Redux has a peer dependency on redux, so we need to install it as well.
+npm install --save redux ng2-redux
+
+2. Create AppState file
+import { TEST_DATA } from './action'
+
+export interface appState {
+    testData:any;
+ }
+
+ export const INTIAL_STATE:appState = {
+     testData:[]
+ }
+
+ export function rootReducer(state: appState, action): appState {
+     switch (action.type) {  // from import { TEST_DATA } from './action'
+         case TEST_DATA:
+         return {testData: action.payload}; // Controll will come after call dispatch method from component
+     }
+     return state;
+ }
+
+3. Create action file
+export const TEST_DATA = 'testData';
+
+4. Importe file in app.module.ts
+import { appState, rootReducer, INTIAL_STATE } from './appstate'; // From appState file
+import { NgRedux, NgReduxModule} from 'ng2-redux';  //  from npm install --save redux ng2-redux
+
+=> Inject NgReduxModule in import:
+  imports: [
+    NgReduxModule // like this   
+  ],
+
+=> configureStore:
+export class AppModule {
+  constructor(ngRedux: NgRedux<appState>){
+    ngRedux.configureStore(rootReducer, INTIAL_STATE);
+  }
+}  
+
+5. Send data from component
+first of all import
+import { NgRedux } from 'ng2-redux';
+import { appState } from '../appstate';
+import { TEST_DATA } from '../action';
+
+=> intilaze constructor
+  constructor(private ngRedux:NgRedux<appState>){    
+  }
+  
+=> call dispatch method , data send from where
+ this.ngRedux.dispatch({type: TEST_DATA, payload: this.employees});
+
+6. Get data from component
+import { NgRedux } from 'ng2-redux';
+import { appState } from '../appstate';
+
+  constructor(private ngRedux:NgRedux<appState>) {
+	userData = [];
+    console.log(ngRedux.getState());
+   this.userData =  ngRedux.getState().testData;   
+  }
+
+//**************************** Angular 2 installation and Doc  *************************************
+https://angular.io/
+1. Set up the Development Environment
+You need to set up your development environment before you can do anything.
+Install Node.js® and npm if they are not already on your machine.
+
+2. Then install the Angular CLI globally.
+npm install -g @angular/cli 
+
+3. Then install the Angular CLI locally with same version.
+npm install @angular/cli
+  
+4.Create a new project
+ng new my-app
+
+5.  Serve the application
+ng serve --open
+The ng serve command launches the server, watches your files, and rebuilds the app as you make changes to those files.
+Using the --open (or just -o) option will automatically open your browser on http://localhost:4200/
+
+6. Use the Angular CLI to generate a new component named hero-detail.
+ng generate component hero-detail
+
+
+  

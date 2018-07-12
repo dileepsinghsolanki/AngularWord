@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html class="no-js" ng-app="uhPeerApp">
+  <head>
+  	<script type="text/javascript" src="underscore.js"></script>
+  </head>
+  <body>
+  	<script type="text/javascript">
+	 // contains_.contains(list, value, [fromIndex]) Alias: includes 
+	 // Returns true if the value is present in the list. Uses indexOf internally, if list is an Array. Use fromIndex to start your search at a given index.
+  	var contains = _.contains([1, 2, 3], 3); // true
+  	console.log("contains", contains);
+
+	//   	invoke_.invoke(list, methodName, *arguments) 
+	// Calls the method named by methodName on each value in the list. Any extra arguments passed to invoke will be forwarded on to the method invocation.
+
+	var invokes = _.invoke([[5, 1, 7], [3, 2, 1]], 'sort');
+	console.log("invokes", invokes);
+	
+	// pluck_.pluck(list, propertyName) 
+	// A convenient version of what is perhaps the most common use-case for map: extracting a list of property values.
+
+	var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+	var plucks = _.pluck(stooges, 'name');
+	console.log("plucks", plucks);
+
+	// size_.size(list) 
+	// Return the number of values in the list.
+
+	_.size({one: 1, two: 2, three: 3});
+	=> 3
+
+	// partition_.partition(array, predicate) 
+	// Split array into two arrays: one whose elements all satisfy predicate and one whose elements all do not satisfy predicate.
+
+	_.partition([0, 1, 2, 3, 4, 5], isOdd);
+	=> [[1, 3, 5], [0, 2, 4]]
+
+	// 	first_.first(array, [n]) Aliases: head, take 
+	// Returns the first element of an array. Passing n will return the first n elements of the array.
+
+	_.first([5, 4, 3, 2, 1]);
+	=> 5
+
+	// 	initial_.initial(array, [n]) 
+	// Returns everything but the last entry of the array. Especially useful on the arguments object. Pass n to exclude the last n elements from the result.
+
+	_.initial([5, 4, 3, 2, 1]);
+	=> [5, 4, 3, 2]
+
+	// 	last_.last(array, [n]) 
+	// Returns the last element of an array. Passing n will return the last n elements of the array.
+
+	_.last([5, 4, 3, 2, 1]);
+	=> 1
+
+	// rest_.rest(array, [index]) Aliases: tail, drop 
+	// Returns the rest of the elements in an array. Pass an index to return the values of the array from that index onward.
+
+	_.rest([5, 4, 3, 2, 1]);
+	=> [4, 3, 2, 1]
+
+	// console.log(_.rest([5, 4, 3, 2, 1], [3]));
+	// o/p [2, 1]
+
+	// 	without_.without(array, *values) 
+	// Returns a copy of the array with all instances of the values removed.
+
+	_.without([1, 2, 1, 0, 3, 1, 4], 0, 1);
+	=> [2, 3, 4]
+
+  	</script>
+  </body>
+ </html>

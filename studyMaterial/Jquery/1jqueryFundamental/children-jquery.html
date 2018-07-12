@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>children demo</title>
+  <style>
+  body {
+    font-size: 16px;
+    font-weight: bolder;
+  }
+  p {
+    margin: 5px 0;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+ <h4>Description: Get the children of each element in the set of matched elements, optionally filtered by a selector..<br>Find all children with a class "selected" of each div...</h4><br>
+ 
+<div>
+  <span>Hello</span>
+  <p class="selected">Hello Again</p>
+  <div class="selected">And Again</div>
+  <p>And One Last Time</p>
+</div>
+ <br><br>
+ 
+ <ul class="level-1">
+  <li class="item-i">I</li>
+  <li class="item-ii">II
+    <ul class="level-2">
+      <li class="item-a">A</li>
+      <li class="item-b">B
+        <ul class="level-3">
+          <li class="item-1">1</li>
+          <li class="item-2">2</li>
+          <li class="item-3">3</li>
+        </ul>
+      </li>
+      <li class="item-c">C</li>
+    </ul>
+  </li>
+  <li class="item-iii">III</li>
+</ul>
+ 
+<script>
+$( "ul.level-2" ).children().css( "background-color", "red" );
+$( "div" ).children( ".selected" ).css( "color", "blue" );
+</script>
+ 
+</body>
+</html>

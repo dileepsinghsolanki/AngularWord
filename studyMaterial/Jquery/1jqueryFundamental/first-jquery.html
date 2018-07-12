@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>first demo</title>
+  <style>
+  .highlight{
+    background-color: yellow
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ <h4>Description: Reduce the set of matched elements to the first in the set.<br>This method does not accept any arguments..</h4><br>
+ 
+<p>
+  <span>Look:</span>
+  <span>This is some text in a paragraph.</span>
+  <span>This is a note about it.</span>
+</p>
+ 
+<script>
+$( "p span" ).first().addClass( "highlight" );
+</script>
+ 
+</body>
+</html>
+
+<!-- $( "li" ).first().css( "background-color", "red" ); -->

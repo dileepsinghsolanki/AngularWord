@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>append demo</title>
+  <style>
+  p {
+    background: yellow;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+ <h4> Description: Insert content, specified by the parameter, to the end of each element in the set of matched elements.. <br> Appends some HTML to all paragraphs. </h4>
+ 
+<p>I would like to say: </p>
+ <br><br>
+ <h2>Greetings</h2>
+<div class="container">
+  <div class="inner">Hello</div>
+  <div class="inner">Goodbye</div>
+</div>
+ 
+<script>
+$( ".inner" ).append( "<p>Test</p>" );
+$( "p" ).append( "<strong>Hello</strong>" );
+</script>
+ 
+</body>
+</html>

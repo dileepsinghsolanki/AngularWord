@@ -1,0 +1,16 @@
+Uhpeer upload - 
+sudo su 
+password: lms123
+cd path
+move to project folder
+ctrl+r (ps aux | grep grunt) or type grunt
+kill -9 port_number
+upload files using file zilla
+grunt http &
+
+
+application=> system=> ux---
+fileZila :
+upeer==> window => upeer_ui
+
+

@@ -1,0 +1,10 @@
+https://www.codeproject.com/Articles/1174685/Learn-Angular-step-by-step-for-Beginners-Lab
+https://ponyfoo.com/articles/setting-up-angular-2-development-environment#set-up-your-base-project
+
+
+https://www.youtube.com/watch?v=oMgvi-AV-eY
+
+
+TypeScript:
+“TypeScript is a sugar coated ( सहज बनाना ) Object oriented programming language over JavaScript.”
+Internally typescript will compile ( must be right word would be “transpile”) in to pure javascript code in terms of functions , closures and IIFE.

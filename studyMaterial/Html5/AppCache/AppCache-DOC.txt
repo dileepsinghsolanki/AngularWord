@@ -1,0 +1,77 @@
+
+********************** What is Application Cache? =>
+
+HTML5 introduces application cache, which means that a web application is cached, and accessible without an internet connection.
+
+Application cache gives an application three advantages:
+
+    Offline browsing - users can use the application when they're offline
+    Speed: cached resources are local, and therefore load faster.
+    Reduced server load: the browser only downloads resources that have changed from the server.
+    
+Cache Manifest Basics :
+
+To enable application cache, include the manifest attribute in the document's <html> tag:
+<!DOCTYPE HTML>
+<html manifest="demo.appcache">
+...
+</html> 
+
+Every page with the manifest attribute specified will be cached when the user visits it. If the manifest attribute is not specified, the page will not be cached (unless the page is specified directly in the manifest file).
+The recommended file extension for manifest files is: ".appcache"  
+
+****************** The Manifest File =>
+The manifest file is a simple text file, which tells the browser what to cache (and what to never cache).
+The manifest file has three sections:
+
+    CACHE MANIFEST - Files listed under this header will be cached after they are downloaded for the first time
+    NETWORK - Files listed under this header require a connection to the server, and will never be cached
+    FALLBACK - Files listed under this header specifies fallback pages if a page is inaccessible
+
+CACHE MANIFEST
+The first line, CACHE MANIFEST, is required:
+
+CACHE MANIFEST
+/theme.css
+/logo.gif
+/main.js
+The manifest file above lists three resources: a CSS file, a GIF image, and a JavaScript file. When the manifest file is loaded, the browser will download the three files from the root directory of the web site. Then, whenever the user is not connected to the internet, the resources will still be available.
+
+******************  Network  *********************
+NETWORK
+The NETWORK section below specifies that the file "login.asp" should never be cached, and will not be available offline:
+
+NETWORK:
+login.asp
+An asterisk can be used to indicate that all other resources/files require an internet connection:
+
+NETWORK:
+*
+
+
+*****************  FALLBACK   *******************
+The FALLBACK section below specifies that "offline.html" will be served in place of all files in the /html/ catalog, in case an internet connection cannot be established:
+
+FALLBACK:
+/html/ /offline.html
+Note: The first URI is the resource, the second is the fallback.
+Note:On the Apache web servers, the MIME type for the manifest (.appcache) files can be set by adding AddType text/cache-manifest .appcache to a .htaccess file within the root directory of the application.
+
+****************
+ClientProfile directory which displays the HTML5_AppCache_Example_Offline.html page when pages in the ClientProfile directory cannot be accessed.
+FALLBACK:
+ /ClientProfile/ /HTML5_AppCache_Example_Offline.html
+ 
+********************  Updating the Cache
+Once an application is cached, it remains cached until one of the following happens:
+
+The user clears the browser's cache
+The manifest file is modified (see tip below)
+The application cache is programmatically updated
+
+****************  Notes on Application Cache
+Be careful with what you cache.
+
+Once a file is cached, the browser will continue to show the cached version, even if you change the file on the server. To ensure the browser updates the cache, you need to change the manifest file.
+
+Note: Browsers may have different size limits for cached data (some browsers have a 5MB limit per site).

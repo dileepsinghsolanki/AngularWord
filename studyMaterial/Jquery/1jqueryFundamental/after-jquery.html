@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>after demo</title>
+  <style>
+  span {
+    background: yellow;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+<h4> Description: Insert content, specified by the parameter, after each element in the set of matched elements. <br> Inserts some HTML after all paragraphs. </h4>
+ 
+<span>I would like to say: </span>
+ 
+ <br><br>
+ <div class="container">
+  <h2>Greetings</h2>
+  <div class="inner">Hello</div>
+  <p>Test</p>
+  <div class="inner">Goodbye</div>
+  <p>Test</p>
+</div>
+
+<script>
+
+$( ".container" ).after( $( "h2" ) );
+$( "span" ).after( "<b>Hello</b>" );
+
+</script>
+ 
+</body>
+</html>

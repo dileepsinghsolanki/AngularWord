@@ -1,0 +1,8 @@
+$rootScope and $scope
+Scope is an object that refers to the application model. It acts as a context for evaluating expressions. Typically, it acts as a glue between controller and view. Scopes are hierarchical in nature and follow the DOM structure of your angular app. AngularJS has two scope objects: $rootScope and $scope. Let's have a look, how they work.
+
+$scope
+A $scope is a JavaScript object which is used for communication between controller and view. Basically, $scope binds a view (DOM element) to the viewmodel and functions defined in a controller.
+
+$rootScope
+The $rootScope is the top-most scope. An app can have only one $rootScope which will be shared among all the components of an app. Hence it acts like a global variable. All other $scopes are children of the $rootScope.

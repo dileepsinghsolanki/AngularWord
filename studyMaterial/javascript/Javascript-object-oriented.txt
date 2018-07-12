@@ -1,0 +1,47 @@
+*********** Get ****************
+The get syntax binds an object property to a function that will be called when that property is looked up.
+var obj = {
+  log: ['a', 'b', 'c'],
+  get latest() {
+    if (this.log.length == 0) {
+      return undefined;
+    }
+    return this.log[this.log.length - 1];
+  }
+}
+
+console.log(obj.latest);
+// expected output: "c"
+
+******** Interface  *****************
+Interfaces define properties, methods, and events, which are the members of the interface. Interfaces contain only the declaration of the members. It is the responsibility of the deriving class to define the members.
+Syntax
+interface interface_name { 
+}
+
+Example: Interface and Objects
+interface IPerson { 
+   firstName:string, 
+   lastName:string, 
+   sayHi: ()=>string 
+} 
+
+var customer:IPerson = { 
+   firstName:"Tom",
+   lastName:"Hanks", 
+   sayHi: ():string =>{return "Hi there"} 
+} 
+
+console.log("Customer Object ") 
+console.log(customer.firstName) 
+console.log(customer.lastName) 
+console.log(customer.sayHi())  
+
+var employee:IPerson = { 
+   firstName:"Jim",
+   lastName:"Blakes", 
+   sayHi: ():string =>{return "Hello!!!"} 
+} 
+  
+console.log("Employee  Object ") 
+console.log(employee.firstName) console.log(employee.lastName)

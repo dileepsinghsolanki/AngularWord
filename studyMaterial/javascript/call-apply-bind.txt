@@ -1,0 +1,101 @@
+********* Call Apply, Bind ************ 
+call and apply call a function while bind creates a function. Though with call() you pass arguments individually and apply() as an argument array.
+=> Use .bind() when you want that function to later be called with a certain context, useful in events.
+=> Use .call() or .apply() when you want to invoke the function immediately, and modify the context.
+
+var obj = {
+  x: 81,
+  getX: function() { return this.x; }
+}; 
+ 
+console.log("bind", obj.getX.bind(obj)());
+
+console.log("call", obj.getX.call(obj));
+
+console.log("apply", obj.getX.apply(obj));
+
+************ Call
+The call() method is a predefined JavaScript method.
+It can be used to invoke (call) a method with an owner object as an argument (parameter).
+With call(), an object can use a method belonging to another object.
+
+var person = {
+    fullName: function() {
+        return this.firstName + " " + this.lastName;
+    }
+}
+var person1 = {
+    firstName:"John",
+    lastName: "Doe",
+}
+var person2 = {
+    firstName:"Mary",
+    lastName: "Doe",
+}
+var x1 = person.fullName.call(person1); 
+console.log(x1);
+var x2 = person.fullName.call(person2); 
+console.log(x2);
+
+
+Call Method with argument: 
+var person = {
+    fullName: function(city, country) {
+        return this.firstName + " " + this.lastName + "," + city + "," + country;
+    }
+}
+var person1 = {
+    firstName:"John",
+    lastName: "Doe",
+}
+person.fullName.call(person1, "Oslo", "Norway");
+
+*********** Applyyyyyyyyyyyyyyyyyyyyyy
+The apply() method is similar to the call() method (previous chapter).
+The call() method takes arguments separately.
+
+The apply() method takes arguments as an array.
+The apply() method is very handy if you want to use an array instead of an argument list.
+
+var person = {
+    fullName: function() {
+        return this.firstName + " " + this.lastName;
+    }
+}
+var person1 = {
+    firstName: "Mary",
+    lastName: "Doe",
+}
+person.fullName.apply(person1);  // Will return "Mary Doe"
+
+Method with Arguments
+The apply() method accepts arguments in an array:
+var person = {
+    fullName: function(city, country) {
+        return this.firstName + " " + this.lastName + "," + city + "," + country;
+    }
+}
+var person1 = {
+    firstName:"John",
+    lastName: "Doe",
+}
+person.fullName.apply(person1, ["Oslo", "Norway"]);
+
+************** Bindddddddddddddddddddddddddddddd
+bind attaches this into function and it needs to be invoked separately like this:
+
+var person = {  
+  name: "James Smith",
+  hello: function(thing) {
+    console.log(this.name + " says hello " + thing);
+  }
+}
+
+person.hello("world");  // output: "James Smith says hello world"
+var helloFunc = person.hello.bind({ name: "Jim Smith" });
+helloFunc("world");  // output: Jim Smith says hello world
+
+or like this:
+...    
+var helloFunc = person.hello.bind({ name: "Jim Smith" }, "world");
+helloFunc();  // output: Jim Smith says hello world"

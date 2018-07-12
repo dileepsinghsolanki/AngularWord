@@ -1,0 +1,15 @@
+JavaScript
+.every() (stops looping the first time the iterator returns false or something falsey)
+.some() (stops looping the first time the iterator returns true or something truthy)
+.filter() (creates a new array including elements where the filter function returns true and omitting the ones where it returns false)
+.map() (creates a new array from the values returned by the iterator function)
+.reduce() (builds up a value by repeated calling the iterator, passing in previous values; see the spec for the details; useful for summing the contents of an array and many other things)
+.reduceRight() (like reduce, but works in descending rather than ascending order)
+
+
+**** Filter  ****
+var fruits = ['apple', 'Banana', 'grapes', 'Mango', 'orange'];
+var b = fruits.filter(function(item, index, array){
+	console.log("IndexOf", item.indexOf('ap'));
+	return item.indexOf('ap') > -1;
+});

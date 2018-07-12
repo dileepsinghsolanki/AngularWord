@@ -1,0 +1,93 @@
+/***************  JSON  **********************/
+For AJAX applications, JSON is faster and easier than XML:
+JavaScript Object Notation:
+=> JSON is a lightweight data-interchange format that is easy for humans to read and write.
+=> JavaScript Object Notation, is an open standard format that uses human-readable text to transmit data objects consisting of attribute–value pairs.
+   It 	is used primarily to transmit data between a server and web application.
+=> JSON (JavaScript Object Notation) is a lightweight data-interchange format.
+   It is easy for humans to read and write. It is easy for machines to parse and generate.
+   It is based on a subset of the JavaScript Programming Language
+=>  JSON stands for JavaScript Object Notation
+    JSON is lightweight data interchange format
+    JSON is language independent *
+    JSON is "self-describing" and easy to understand
+	
+/*****************************	
+How to Get json value :	
+Example : 
+			var jason = {
+			"age" : "24",
+			"hometown" : "Missoula, MT",
+			"gender" : "male"
+			}; 
+
+This creates an object that we access using the variable jason. By enclosing the variable’s value in curly braces, we’re indicating that the value is an object. Inside the object, we can declare any number of properties using a "name": "value" pairing, separated by commas.
+	document.write('Jason is ' jason.age); // Output: Jason is 24
+	document.write('Jason is a ' jason.gender); // Output: Jason is a male 
+
+/*****************************
+Storing JSON Data in Arrays :
+
+A slightly more complicated example involves storing two people in one variable.
+To do this, we enclose multiple objects in square brackets, which signifies an array.
+Example :
+		var family = [{
+			"name" : "Jason",
+			"age" : "24",
+			"gender" : "male"
+			},
+			{
+			"name" : "Kyle",
+			"age" : "21",
+			"gender" : "male"
+		}]; 
+
+To access this information, we need to access the array index of the person we wish to access.
+	document.write(family[1].name); // Output: Kyle
+	document.write(family[0].age); // Output: 24 
+	
+/*************************************
+
+Nesting JSON Data :
+
+Another way to store multiple people in our variable would be to nest objects.
+To do this, we would create something similar to the following:
+		var family = {
+			"jason" : {
+			"name" : "Jason Lengstorf",
+			"age" : "24",
+			"gender" : "male"
+			},
+			"kyle" : {
+			"name" : "Kyle Lengstorf",
+			"age" : "21",
+			"gender" : "male"
+			}
+		} 
+		
+Accessing information in nested objects is a little easier to understand; 
+to access information in the object, we would use the following snippet:
+-
+	document.write(family.jason.name); // Output: Jason Lengstorf
+	document.write(family.kyle.age); // Output: 21
+	document.write(family.jason.gender); // Output: male 
+
+/****************************************
+
+<p id="demo"></p>
+<script>
+	var text = '{"name":"John Johnson","street":"Oslo West 16","phone":"555 1234567"}'
+	var obj = JSON.parse(text);
+	document.getElementById("demo").innerHTML =
+	obj.name + "<br>" +
+	obj.street + "<br>" +
+	obj.phone;
+</script>
+	
+Output :
+	John Johnson
+	Oslo West 16
+	555 1234567
+	555 1234567
+
+	

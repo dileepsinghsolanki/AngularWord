@@ -1,0 +1,183 @@
+https://www.codementor.io/nihantanu/21-essential-javascript-tech-interview-practice-questions-answers-du107p62z
+https://www.thatjsdude.com/interview/js2.html
+https://www.w3resource.com/javascript-exercises/javascript-functions-exercises.php
+
+NOTE : 
+var a = 1 || 2;
+//a = 1
+
+//its because a will take the value (which is not null) from left
+var a = 0 || 2;
+//so for this a=2; //its because the closest is 2 (which is not null)
+
+var a = 0 || 2 || 1;    //here also a = 2;
+
+Another expression:
+
+var a = 1 && 2;
+//a = 2
+
+var a = 1 && 2 && 3;
+//a = 3 //for && operator it will take the fartest value
+//as long as every expression is true
+
+var a = 0 && 2 && 3;
+//a = 0
+
+Unique Array :
+console.log(Array.from(new Set([1,2,2,3,3,3,4,5])));
+
+1 : Write a JavaScript function which will take an array of numbers stored and find the second lowest and second greatest numbers, respectively.
+
+var num = [1,7,30,4,50];
+var arrSort = num.sort(function(a,b){
+	var aaa = a-b;
+	return a-b;	
+});
+
+var arrLength = arrSort.length;
+var SHL = arrLength-2;
+
+console.log("Second Lowest Number", arrSort[1]);
+console.log("Second Highest Number",arrSort[SHL]);
+ Second Lowest Number 4
+ Second Highest Number 30
+
+2: Write a JavaScript function that accepts a string as a parameter and find the longest word within the string.
+
+function longestWord(string) {
+    var str = string.split(" ");
+    var longest = 0;
+    var word = null;
+    str.forEach(function(str) {
+        if (longest < str.length) {
+            longest = str.length;
+            word = str;
+        }
+    });
+    return word;
+}
+console.log(longestWord("pride and prejudice"));
+
+3 Write a JavaScript function that reverse a number.
+
+var num = 12345;
+var numString = num.toString();
+console.log(numString);
+var strSplit = split(numString,"");
+var revStr = strSplit.reverse();
+console.log(revStr);
+
+var wordSort = "dzhlckanb";
+var wordSplit = wordSort.split(' ');
+var res = wordSplit.sort().join();
+console.log(res);
+
+4 Remove Duplicate Value
+
+var dupliArr = [100,20,5,20,9];
+dupliArr = dupliArr.filter(function(cv, index, arr){
+	console.log(cv, index, arr);
+	 return arr.indexOf(cv) == index;
+})
+console.log(dupliArr);
+
+**************** Example of Super
+class test {
+	constructor(x, y){
+		this.height = x;
+		this.width = y;
+	}
+	getX(){
+		console.log("Height:", this.height);
+	}
+}
+ class childTest extends test {
+	getY(){
+		console.log("Width:", this.width);	
+	}
+}
+var obj = new childTest(10, 20);
+console.log(obj.getX());
+
+************ O/P Hello Word Today
+function titleCase(str) {
+     str = str.toLowerCase().split("-");               
+     for(var i = 0; i < str.length; i++){ 
+          str[i] = str[i].split('');                    
+          str[i][0] = str[i][0].toUpperCase();          
+          str[i] = str[i].join('');                    
+     }
+     return str.join(' ');                              
+}
+console.log(titleCase("hello-word-today"));
+
+
+************ Array Objectttttttttttt
+var student1 = [];
+var email1 = {};
+var student = [];
+var email = {};
+email= {"email":"dileep@gmail.com"}
+email1= {"email":"dileep@gmail.com"}
+var staticArr = student.push(email);
+console.log("staticArr", student);
+for(var i=0;i<3;i++){
+	student1.push(email1);
+}
+console.log("dynamecArr", student1);
+
+*********** Object sortingggggggggggggg
+Your objects can have any amount of properties and you can choose to sort by whatever object property you want, number or string, if you put the objects in an array. Consider this array:
+
+var arrayOfObjects = [   
+    {
+        name: 'Diana',
+        born: 1373925600000, // Mon, Jul 15 2013
+        num: 4,
+        sex: 'female'
+    },
+    {
+
+        name: 'Beyonce',
+        born: 1366832953000, // Wed, Apr 24 2013
+        num: 2,
+        sex: 'female'
+    },
+    {            
+        name: 'Albert',
+        born: 1370288700000, // Mon, Jun 3 2013
+        num: 3,
+        sex: 'male'
+    },    
+    {
+        name: 'Doris',
+        born: 1354412087000, // Sat, Dec 1 2012
+        num: 1,
+        sex: 'female'
+    }
+];
+var byNum = arrayOfObjects.slice(0);
+byNum.sort(function(a,b){
+	return b.num-a.num;
+});
+console.log(byNum);
+
+**************** Sort Key of object
+var myObj = {"you": 100, "me": 75, "foo": 116, "bar": 15};
+keysSorted = Object.keys(myObj).sort(function(a,b){
+	return myObj[a]-myObj[b];
+})
+alert(keysSorted); 
+
+************** Sort object with key value
+function sortObject(obj) {
+  return Object.keys(obj)
+    .sort().reduce((a, v) => {
+    a[v] = obj[v];
+    return a; }, {});  // a return {a:1} {a:1,b:2} {a:1,b:2,c:3} {a:1,b:2,c:3:d:4} {a:1,b:2,c:3:d:4,e:5}
+}
+let myObject = {a: 1, c: 3, e: 5, b: 2, d: 4};
+let sortedMyObject = sortObject(myObject);
+console.log(sortedMyObject);
+VM168:9 {a: 1, b: 2, c: 3, d: 4, e: 5}

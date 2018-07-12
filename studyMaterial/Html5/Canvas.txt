@@ -1,0 +1,190 @@
+/********* CANVAS  **************/
+The HTML <canvas> element is used to draw graphics, on the fly, via JavaScript.
+The <canvas> element is only a container for graphics. You must use JavaScript to actually draw the graphics.
+Canvas has several methods for drawing paths, boxes, circles, text, and adding images.
+
+Canvas Examples
+A canvas is a rectangular area on an HTML page. By default, a canvas has no border and no content.
+The markup looks like this:
+<canvas id="myCanvas" width="200" height="100"></canvas>
+
+With Border:
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+********Move To
+The moveTo() method moves the path to the specified point in the canvas, without creating a line
+Tip: Use the stroke() method to actually draw the path on the canvas.
+
+JavaScript syntax:
+context.moveTo(x,y);
+
+Parameter Values
+Parameter	Description	Play it
+x	The x-coordinate of where to move the path to	
+y	The y-coordinate of where to move the path to
+
+********* Draw a Line
+The lineTo() method adds a new point and creates a line TO that point FROM the last specified point in the canvas (this method does not draw the line).
+Tip: Use the stroke() method to actually draw the path on the canvas.
+
+Parameter Values
+Parameter	Description	Play it
+x	The x-coordinate of where to create the line to	
+y	The y-coordinate of where to create the line to
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.moveTo(0, 0);
+ctx.lineTo(200, 100);
+ctx.stroke();
+
+*********** Draw a Circle
+The arc() method creates an arc/curve (used to create circles, or parts of circles).
+Tip: To create a circle with arc(): Set start angle to 0 and end angle to 2*Math.PI.
+Tip: Use the stroke() or the fill() method to actually draw the arc on the canvas.
+
+
+JavaScript syntax:	
+context.arc(x,y,r,sAngle,eAngle,counterclockwise);
+
+Parameter Values
+Parameter	Description	Play it
+x	The x-coordinate of the center of the circle	
+y	The y-coordinate of the center of the circle	
+r	The radius of the circle	
+sAngle	The starting angle, in radians (0 is at the 3 o'clock position of the arc's circle)	
+eAngle	The ending angle, in radians	
+counterclockwise	Optional. Specifies whether the drawing should be counterclockwise or clockwise. False is default, and indicates clockwise, while true indicates counter-clockwise.
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.beginPath();
+ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+ctx.stroke();
+
+*********** Draw a Text
+The fillText() method draws filled text on the canvas. The default color of the text is black.
+Tip: Use the font property to specify font and font size, and use the fillStyle property to render the text in another color/gradient.
+
+Parameter Values
+Parameter	Description	Play it
+text	Specifies the text that will be written on the canvas	
+x	The x coordinate where to start painting the text (relative to the canvas)	
+y	The y coordinate where to start painting the text (relative to the canvas)	
+maxWidth	Optional. The maximum allowed width of the text, in pixels
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.font = "30px Arial";
+ctx.fillText("Hello World", 10, 50);
+
+*********** Stroke Text
+The strokeStyle property sets or returns the color, gradient, or pattern used for strokes.
+text: The text to draw using the current font, textAlign, textBaseline, and direction values.
+x: The x axis of the coordinate for the text starting point.
+y: The y axis of the coordinate for the text starting point.
+
+Exa:
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.font = "30px Arial";
+ctx.strokeText("Hello World", 10, 50);
+
+************ Draw Image
+Definition and Usage
+The drawImage() method draws an image, canvas, or video onto the canvas.
+The drawImage() method can also draw parts of an image, and/or increase/reduce the image size.
+
+Position the image on the canvas:
+JavaScript syntax:	
+context.drawImage(img,x,y);
+
+Position the image on the canvas, and specify width and height of the image:
+JavaScript syntax:	
+context.drawImage(img,x,y,width,height);
+
+Clip the image and position the clipped part on the canvas:
+JavaScript syntax:	
+context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+
+Parameter Values
+Parameter	Description	Play it
+img	Specifies the image, canvas, or video element to use	 
+sx	Optional. The x coordinate where to start clipping	
+sy	Optional. The y coordinate where to start clipping	
+swidth	Optional. The width of the clipped image	
+sheight	Optional. The height of the clipped image	
+x	The x coordinate where to place the image on the canvas	
+y	The y coordinate where to place the image on the canvas	
+width	Optional. The width of the image to use (stretch or reduce the image)	
+height	Optional. The height of the image to use (stretch or reduce the image)
+
+Exa:
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+var img = document.getElementById("scream");
+ctx.drawImage(img, 10, 10);
+
+******************** Browser Support
+
+The latest versions of Firefox, Safari, Chrome and Opera all support for HTML5 Canvas but IE8 does not support canvas natively.
+You can use ExplorerCanvas to have canvas support through Internet Explorer. You just need to include this JavaScript as follows −
+
+<!--[if IE]><script src = "excanvas.js"></script><![endif]-->
+
+HTML5 Canvas Examples
+This tutorial covers the following examples related to HTML5 <canvas> element.
+
+Sr.No.	Examples & Description
+1	Drawing Rectangles
+Learn how to draw rectangle using HTML5 <canvas> element
+
+2	Drawing Paths
+Learn how to make shapes using paths in HTML5 <canvas> element
+
+3	Drawing Lines
+Learn how to draw lines using HTML5 <canvas> element
+
+4	Drawing Bezier
+Learn how to draw Bezier curve using HTML5 <canvas> element
+
+5	Drawing Quadratic
+Learn how to draw quadratic curve using HTML5 <canvas> element
+
+6	Using Images
+Learn how to use images with HTML5 <canvas> element
+
+7	Create Gradients
+Learn how to create gradients using HTML5 <canvas> element
+
+8	Styles and Colors
+Learn how to apply styles and colors using HTML5 <canvas> element
+
+9	Text and Fonts
+Learn how to draw amazing text using different fonts and their size.
+
+10	Pattern and Shadow
+Learn how to draw different patterns and drop shadows.
+
+11	Canvas States
+Learn how to save and restore canvas states while doing complex drawings on a canvas.
+
+12	Canvas Translation
+This method is used to move the canvas and its origin to a different point in the grid.
+
+13	Canvas Rotation
+This method is used to rotate the canvas around the current origin.
+
+14	Canvas Scaling
+This method is used to increase or decrease the units in a canvas grid.
+
+15	Canvas Transform
+These methods allow modifications directly to the transformation matrix.
+
+16	Canvas Composition
+This method is used to mask off certain areas or clear sections from the canvas.
+
+17	Canvas Animation
+Learn how to create basic animation using HTML5 canvas and JavaScript.

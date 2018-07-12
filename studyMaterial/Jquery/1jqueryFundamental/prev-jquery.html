@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>prev demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+ <h4> Description: Get the immediately preceding sibling of each element in the set of matched elements, optionally filtered by a selector. <br> For each paragraph, find the very previous sibling that has a class "selected".</h4>
+ 
+ <div><span>Hello</span></div>
+<p class="selected">Hello Again</p>
+<p>And Again</p>
+ 
+ <br>
+
+ <ul>
+  <li>list item 1</li>
+  <li>list item 2</li>
+  <li class="third-item">list item 3</li>
+  <li>list item 4</li>
+  <li>list item 5</li>
+</ul>
+ 
+<script>  
+$( "p" ).prev( ".selected" ).css( "background", "yellow" );
+$( "li.third-item" ).prev().css( "background-color", "red" );
+</script>
+ 
+</body>
+</html>

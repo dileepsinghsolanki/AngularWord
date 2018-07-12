@@ -1,0 +1,12 @@
+  $('#inputEmail').keyup(function() {
+
+        var email = $('#inputEmail').val(); 
+
+        $(this).next().html('You entered'+email);
+
+
+	var val = $(this).attr('value'); ///  title, name, id ,
+
+	url = $('#cat_id').attr(\"href\");
+
+    window.top.location='index.php?q=admin/'+cat_id'/delete/$1';

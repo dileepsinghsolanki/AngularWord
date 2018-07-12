@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>before demo</title>
+  <style>
+  p {
+    background: yellow;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+<h4> Description: Insert content, specified by the parameter, before each element in the set of matched elements. <br> Inserts some HTML before all paragraphs.. </h4>
+ 
+<p> is what I said...</p>
+ 
+<script>
+$( "p" ).before( document.createTextNode( "Inserts a DOM element before all paragraphs." ) );
+$( "p" ).before( "<b>Hello</b>" );
+
+</script>
+ 
+</body>
+</html>

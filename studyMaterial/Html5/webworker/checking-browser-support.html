@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+
+<html>
+   <head>
+      <title>BrowserSupport</title>
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+      
+      <script>
+      function myFunction() {
+         
+         if (Modernizr.webworkers) {
+            alert("Congratulation!! you have web workers support." );
+         } else {
+            alert("Sorry!! you do not have web workers support." );
+         }
+      }
+      </script>
+   </head>
+   
+   <body>
+      <button onclick = "myFunction()">Click me</button>
+   </body>
+</html>

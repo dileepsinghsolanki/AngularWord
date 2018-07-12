@@ -1,0 +1,96 @@
+Routing is a mechanism which helps you to divide your single page application into multiple views and bind these views to corresponding controllers. In this article, you will learn how to configure angular routing.
+
+An angular route is specified within the URL by using # sign and enables you to show a specific view. Some example of angular routes are given below:
+
+http://yourdomain.com/index.html#users
+http://yourdomain.com/index.html#orders
+http://yourdomain.com/index.html#books
+http://yourdomain.com/index.html#games
+AngularJS Route Module
+The routing functionality is provided by the angular's ngRoute module, which is the part of angular-route.js JavaScript file. Hence, include angular-route.js file into your AngularJS application for using routing. You have to add ngRoute module as an dependent module as given below:
+
+var app = angular.module("app", ['ngRoute']);
+Configuring the $routeProvider
+The routes in your angular application are declared with the help of $routeProvider which is the provider of the $route service. The $routeProvider is configured in your app module's config() function.
+
+Syntax to configure Routing
+<script>
+ appmodule.config(['$routeProvider',
+ function($routeProvider) {
+ $routeProvider.
+ when('/route1', {
+ templateUrl: 'template-1.html',
+ controller: 'RouteController1'
+ }).
+ when('/route2:param', {
+ templateUrl: 'template-2.html',
+ controller: 'RouteController2'
+ }).
+ otherwise({ // if no route paths matches
+ redirectTo: '/' 
+ });
+ }]);
+</script>
+ 
+<!-- And links should be defined as: -->
+ 
+<a href="#/route1">Route 1</a><br/>
+<a href="#/route2:123">Route 2</a><br/>
+The when() function takes a route path and a JavaScript object as parameters. The route path is matched against the part of the URL after the # sign. The otherwise() function redirects to the specified route if no route paths matches.
+
+The ngView Directive
+The ngView directive renders the template of the current route into the main layout (index.html) file. Every time, when the current route changes, the ngView directive view changes based on the new route path settings.
+
+<div ng-view></div>
+An Example of Routing
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+ <title>AngularJS Routing</title>
+ <script src="lib/angular.js"></script>
+ <script src="lib/angular-route.js"></script>
+ 
+ <script>
+ var app = angular.module("app", ['ngRoute']);
+ 
+ app.controller("homeController", function ($scope) {
+ 
+ $scope.message = "Welcome to Home Page!";
+ });
+ 
+ app.controller("aboutController", function ($scope) {
+ 
+ $scope.message = "Welcome to About Page!";
+ });
+ 
+ app.controller("contactController", function ($scope) {
+ 
+ $scope.message = "Welcome to Contact Page!";
+ });
+ 
+ app.config(['$routeProvider', function ($routeProvider) {
+ $routeProvider.when("/", {
+ templateUrl: "templates/pages/home.html",
+ controller: "homeController"
+ }).when("/about", {
+ templateUrl: "templates/pages/about.html",
+ controller: "aboutController"
+ }).when("/contact", {
+ templateUrl: "templates/pages/contact.html",
+ controller: "contactController"
+ }).otherwise({
+ redirectTo: 'index.html'
+ });
+ }]);
+ 
+ </script>
+</head>
+<body ng-app="app">
+ <div>
+ <a href="#">Home</a> |
+ <a href="#contact">Contact</a> |
+ <a href="#about">About</a>
+ </div>
+ <div ng-view></div>
+</body>

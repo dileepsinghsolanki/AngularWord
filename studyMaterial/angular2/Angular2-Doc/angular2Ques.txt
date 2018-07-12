@@ -1,0 +1,63 @@
+1. Promises vs. Observables
+Promises represent a single value that returns sometime in the future, whereas Observables represent 0 or more values that either return immediately or sometime in the future.
+Based on this we can derive that there are functional differences between the two paradigms. Promises work only with single values, whilst Observables do not. Promises are only asynchronous where Observables are either synchronous or asynchronous. Having said that, there are plenty of other features that Observables support that Promises do not. Observables support another function called the toPromise() function where you can cast the Observable to a Promise.
+
+The problem with Promises is that they are neither cancellable nor are they a good way to manage collections of data
+Observables help you manage asynchronous data, such as data coming from a backend service.
+
+*********** Component Life Cycle hooks  ****************
+1) Constructor:
+The constructor of the component class is called before any other component lifecycle hook. If our component is based on any dependencies, the constructor is the best place to inject those dependencies.
+exa: class AppComponent {
+  cars:Array<any>;
+  constructor(private _carService: CarService) {
+   this.cars = _carService.getCars();
+  }
+2) ngOnInit:
+The ngOnInit method of a component is called directly after the constructor and after the ngOnChange is triggered for the first time. It is the perfect place for initialisation work.
+
+3) ngOnChanges
+ − When the value of a data bound property changes, then this method is called.
+ The ngOnChanges will be called first when the value of a bound property changes. It executes, every time the value of an input property changes. It will receive a changes map, containing the current and previous values of the binding, wrapped in a SimpleChange.
+ 
+4) ngOnDestroy
+ − This is the cleanup phase just before Angular destroys the directive/component.
+ The ngDestroy is called in a component’s lifecycle just before the instance of the component is finally destroyed. It is the perfect place to clean the component — for example, to cancel background tasks.
+ 
+5) ngDoCheck:
+ngDoCheck is triggered every time the input properties of a component or a directive are checked. We can use this lifecycle hook to extend the check with our own custom check logic. 
+
+6) ngAfterContentInit:
+The ngAfterContentInit lifecycle hook is called after ngOnInit when the component or directive’s content has been initialised; basically when all the bindings of the component have been checked for the first time.
+
+7) ngAfterContentChecked:
+Called after every check of the component or directive’s content, effectively when all the bindings of the components have been checked; even if they haven’t changed.
+
+8) ngAfterViewInit:
+Called after ngAfterContentInit when the component’s view has been initialised. Applies to components only.
+
+9) ngAfterViewChecked:
+Called after every check of the component’s view. Applies to components only. When all the bindings of the children directives have been checked; even if they haven’t changed.
+
+******* Redux  ************
+An Action, which defines what to do (with optional arguments)
+The state, which stores all of the data in our application
+The Reducer which takes the state and the Action and returns a new state.
+
+Our Action interface looks like this:
+interface Action {
+  type: string;
+  payload?: any;
+}
+
+Notice that our Action has two fields:
+
+type and
+payload
+The type will be an identifying string that describes the action like INCREMENT or ADD_USER. The payload can be an object of any kind. The ? on payload? means that this field is optional.
+
+Our Reducer interface looks like this:
+interface Reducer<T> {
+  (state: T, action: Action): T;
+}
+Our Reducer is using a feature of TypeScript called generics. In this case type T is the type of the state. Notice that we’re saying that a valid Reducer has a function which takes a state (of type T) and an action and returns a new state (also of type T).

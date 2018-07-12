@@ -1,0 +1,104 @@
+$watch(), $digest() and $apply()
+AngularJS has a powerful data binding mechanism. When you do changes in a variable on the $scope object within your view, the $scope object auto-magically updates itself. Similarly, whenever the $scope object changes, the view updates itself with the new value. AngularJS handle data-binding mechanism with the help of three powerful functions: $watch(), $digest() and $apply(). Most of the time AngularJS will call the $scope.$watch() and $scope.$digest() functions for you, but in some cases you may have to call these functions yourself to update new values. Therefore it is really good to know how they work.
+
+$watch()
+The $scope.watch() function is used to observe changes in a variable on the $scope. It accepts three parameters : expression, listener and equality object where listener and equality object are optional parameters.
+
+<!DOCTYPE html>
+<html>
+<head>
+ <title>AngularJS Watch</title>
+ <script src="lib/angular.js"></script>
+ <script>
+ var myapp = angular.module("myapp", []);
+ var myController = myapp.controller("myController", function ($scope) {
+ $scope.name = 'dotnet-tricks.com';
+ $scope.counter = 0;
+ $scope.$watch('name', function (newValue, oldValue) {
+ $scope.counter = $scope.counter + 1;
+ });
+ });
+ </script>
+ 
+</head>
+<body ng-app="myapp" ng-controller="myController">
+ <input type="text" ng-model="name" />
+ <br />
+ Counter: 
+</body>
+</html>
+$digest()
+The $scope.$digest() function iterates through all the watches in the $scope object, and its child $scope objects (if it has any). When $digest() iterates over the watches, it checks if the value of the expression has changed. If the value has changed, AngularJS calls the change callback(listener) with the new value and the old value.
+
+The $digest() function is called whenever AngularJS thinks it is necessary. For example, after a button click, or after an AJAX call. You may have some corner cases where AngularJS does not call the $digest() function for you. In that case you may have to call this function yourself.
+
+<!DOCTYPE html>
+<html>
+<head>
+ <title>AngularJS Digest</title>
+ <script src="lib/angular.js"></script>
+ <script>
+ var myapp = angular.module("myapp", []);
+ var myController = myapp.controller("myController", function ($scope) {
+ 
+ $scope.datetime = new Date();
+ 
+ $scope.updateTime = function () {
+ $scope.datetime = new Date();
+ }
+ 
+ document.getElementById("updateTimeButton").addEventListener('click', function () {
+ console.log("update time clicked");
+ $scope.datetime = new Date();
+ 
+ console.log($scope.datetime);
+ });
+ });
+ </script>
+ 
+</head>
+<body ng-app="myapp" ng-controller="myController">
+ <button ng-click="updateTime()">Update time - ng-click</button>
+ <button id="updateTimeButton">Update time</button>
+ <br />
+ 
+</body>
+</html>
+When you will click on second button, the data binding is not updated. Since $scope.$digest() is not called after the second button's event listener is executed. In this way on clicking the second button the time will be updated in the $scope.data.time variable, but the new time will never displayed.
+
+To fix this issue you need to add a $scope.$digest() call to the second button event listener, like this:
+
+<script type="text/javascript">
+document.getElementById("updateTimeButton").addEventListener('click', function () {
+ console.log("update time clicked");
+ $scope.datetime = new Date();
+ 
+ //to update $scope
+ $scope.$digest();
+ console.log($scope.datetime);
+ });</script>
+$apply()
+Angular do auto-magically updates only those model changes which are inside AngularJS context. When you do change in any model outside of the Angular context (like browser DOM events, setTimeout, XHR or third party libraries), then you need to inform Angular of the changes by calling $apply() manually. When the $apply() function call finishes AngularJS calls $digest() internally, so all data bindings are updated.
+
+In above example, instead of calling $digest() function inside the button listener function you can used the $apply() function like this:
+
+ <script>
+ document.getElementById("updateTimeButton").addEventListener('click', function () {
+ $scope.$apply(function () {
+ console.log("update time clicked");
+ $scope.datetime = new Date();
+ 
+ console.log($scope.datetime);
+ });
+ });
+ </script>
+Note
+
+************** Difference between $apply() vs. $digest() Functions
+1.  The $apply() and $digest() methods are used to update the model properties forcefully. 
+
+2.  The $digest() method evaluate watchers for current scope but $apply() method is used to evaluate watchers for root scope that means it's for all scopes. 
+
+3.  The $apply() method is used to update entire scope variables and bind model properties forcefully. 
+
+4.  The $apply() method is slower than $digest() method because $digest() function trigger watchers on current $scope but $apply() function trigger watchers on entire scopes.

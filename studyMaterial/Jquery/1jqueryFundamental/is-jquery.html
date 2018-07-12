@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>is demo</title>
+  <style>
+  div {
+    color: red;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ <h4>Description: Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.</h4><br>
+<form>
+  <input type="checkbox">
+</form>
+<div></div>
+ 
+<script>
+var isFormParent = $( "input[type='checkbox']" ).parent().is( "form" );
+$( "div" ).text( "isFormParent = " + isFormParent );
+</script>
+ 
+</body>
+</html>

@@ -1,0 +1,28 @@
+*********** Functions as Values ********** 
+Because JavaScript has first-class functions
+=> you can use them just as you do any other objects. 
+You can assign them to variables, add them
+to objects, pass them to other functions as arguments, and return them
+from functions. Basically, you can use a function anywhere you would
+use any other reference value. 
+
+function sayHi() {
+ console.log("Hi!");
+}
+sayHi(); // outputs "Hi!"
+var sayHi2 = sayHi; // Assign as varable
+
+sayHi2(); // outputs "Hi!"
+
+sayHi3(sayHi); // pass as perameter
+
+function sayHi3(param){
+	console.log("param", param);
+}
+
+var cusOBJ = {
+	fullNmae: function(){
+			return "dileep";
+	}
+}
+console.log(cusOBJ.fullNmae());

@@ -1,0 +1,81 @@
+=> atob stands for ASCII to binary
+=> btoa stands for binary to ASCII
+=> blob stands for binary large objects
+
+
+
+=> What is the difference between mean stack and full stack?
+MEAN Stack Developer: 
+Become a MEAN Stack Developer. MEAN is a collection of JavaScript-based technologies — MongoDB, Express.js, AngularJS, and Node.js — used to develop web applications. From the client and server sides to databases, MEAN is a full-stack development toolkit.
+In simple words MEAN stack developers are like JS based application developers
+
+=>full stack developer:
+Others are of the opinion that a full-stack developer is simply someone who is familiar with all layers in computer software development. These developers aren't experts at everything; they simply have a functional knowledge and ability to take a concept and turn it into a finished product.
+A Full stack developer has complete knowledge in server, web appication, apis, User interface etc. They have complete idea about the idea about the whole web development process
+
+A full stack developer is a person who is able to develop websites and web applications on the front end, and work with servers and databases on the back-end.
+
+=> What's the difference between a web site and a web application.
+website is defined by its content, while a web application is defined by its interaction with the user.
+
+Websites are primarily informational. In this sense, http://cnn.com and http://php.net are websites, not web applications.
+Web applications primarily allow the user to perform actions. Google Analytics, gmail, and jslint are web applications.
+A website might just be static content - a web application would have dynamic content. It is a very fuzzy line.
+
+=> ECMA means European Computer Manufacturer’s Association
+
+********* What are the differences between Grunt, Gulp.js and Bower? Why & when to use them? *************
+The Gulp one-liner from their website:
+Automate and enhance your workflow
+
+The Grunt one-liner from theirs:
+The JavaScript Task Runner
+
+And Bower:
+A package manager for the web
+
+=> Grunt focuses on configuration, while Gulp focuses on code
+=> The first significant difference is that Gulp has been designed to use a series of plugins that each do a task.
+=> Grunt uses plugins that often accomplish multiple tasks at the same time. 
+
+********* Spec file  **************
+The spec files are unit tests for your source files, 
+Spec files are generated when you use angular-cli they contain your unit tests for the generated componet or service. 
+
+************** Primtive-- Non-privmtive ************
+A primitive (primitive value, primitive data type) is data that is not an object and has no methods. In JavaScript, there are 6 primitive data types: string, number, boolean, null, undefined, symbol (new in ECMAScript 2015).All of these are inmutable, meaning that their values cannot be changed, while Objects, Array, Date, and others are mutable.
+
+Non-primitive data types are not defined by the programming language, but are instead created by the programmer. They are sometimes called "reference variables," or "object references," since they reference a memory location, which stores the data.
+Non Primitive Data Types:
+Object
+Array
+RegExp
+
+
+**** Hoisting  ***************
+Hoisting is JavaScript's default behavior of moving declarations to the top.
+Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).
+function abc(){    
+a = 10;
+b = 20;
+let aa = a*b;
+var a, b;
+console.log(aa);
+}
+abc();
+
+JavaScript Declarations are Hoisted
+In JavaScript, a variable can be declared after it has been used.
+
+In other words; a variable can be used before it has been declared.
+
+Note = >
+JavaScript Initializations are Not Hoisted
+JavaScript only hoists declarations, not initializations.
+function abc(){    
+var a = 10;
+let aa = a*b;
+var b = 100;
+console.log(aa);
+}
+abc();    O/P: NaN error

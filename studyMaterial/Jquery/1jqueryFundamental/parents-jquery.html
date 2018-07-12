@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.ancestors * { 
+    display: block;
+    border: 2px solid lightgrey;
+    color: lightgrey;
+    padding: 5px;
+    margin: 15px;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("span").parents().css({"color": "red", "border": "2px solid red"});
+});
+</script>
+</head>
+
+<body class="ancestors">body (great-great-grandparent)
+  <div style="width:500px;">div (great-grandparent)
+    <ul>ul (grandparent)  
+      <li>li (direct parent)
+        <span>span</span>
+      </li>
+    </ul>   
+  </div>
+
+</body>
+  <br><br>
+ <h4> This method is similar to closest(), in that they both traverse up the DOM tree. The differences are as follows:<br>
+
+parents()<br>
+
+    Begins with the parent element<br>
+    Travels up the DOM tree and returns all ancestors that matches the passed expression<br>
+    The returned jQuery object contains zero or more than one element<br><br>
+
+closest()<br>
+
+    Begins with the current element<br>
+    Travels up the DOM tree and returns the first ancestor that matches the passed expression<br>
+    The returned jQuery object contains zero or one element<br>
+</h4>
+<!-- The outer red border, before the body element, is the html element (also an ancestor) -->
+</html>

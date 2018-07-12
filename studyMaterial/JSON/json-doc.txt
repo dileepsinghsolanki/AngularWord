@@ -1,0 +1,15 @@
+****** Json  ************
+JSON is data interchange format like XML it is used to pass data from one application to another from server to client or from client to server
+JSON: JavaScript Object Notation.
+JSON is a syntax for storing and exchanging data.
+JSON is text, written with JavaScript object notation.
+
+var json = {"Name": "Mudassar"};
+JSON objects are surrounded by curly braces {}.
+JSON objects are written in key/value pairs.
+Keys must be strings, and values must be a valid JSON data type (string, number, object, array, boolean or null).
+Keys and values are separated by a colon.
+Each key/value pair is separated by a comma.
+
+************ Why use JSON?
+Since the JSON format is text only, it can easily be sent to and from a server,

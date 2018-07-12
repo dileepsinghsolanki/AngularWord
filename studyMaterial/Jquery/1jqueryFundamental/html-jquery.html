@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("span").html("Hello <b>world!</b>");
+        var dd = $("p").html();
+        alert(dd);
+    });
+});
+</script>
+</head>
+<body>
+<!-- Set And Get HTML Content -->
+ <h4>Get the HTML contents of the first element in the set of matched elements <br> In an HTML document, .html() can be used to get the contents of any element. If the selector expression matches more than one element, only the first match will have its HTML content returned.. <br> This method does not accept any arguments.. </h4>
+
+<button> Change content of all p elements </button>
+
+<span>This is a paragraph.</span>
+<p>This is another paragraph.</p>
+
+</body>
+</html>
